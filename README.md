@@ -66,7 +66,7 @@ Run every command from the bundle's root with the virtual environment's Python (
 which the paper does not use. Fig. 1 is a diagram and Fig. 2 a photograph of the bench.
 
 "The burst record" is every power-down burst captured from July 6 to October 3, 2026: 4508 bursts
-in 183 run folders under `tools/data/`, found by the scripts from the folder names and capture
+from 229 runs under `tools/data/`, found by the scripts from the folder names and capture
 dates (`p1_revision_checks.record_runs`). Many of these runs were taken in deliberately provoked
 states for a companion study; the paper uses them only as the record of wakes.
 
