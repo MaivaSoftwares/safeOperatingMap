@@ -1,0 +1,2 @@
+b0_g,b0_signed_g,burst_rate_hz,diag_b0_g,diag_first_valid_us,diag_noise_g,diag_tau_bias_s,error,first_valid_us,fit_n,guard_s,mode,noise_g,ok,phase,point,raw_file,run,settled_g,t_since_dose_s,t_wall_s,tau_bias_s,temp_C
+nan,nan,nan,nan,nan,nan,nan,,nan,0,nan,pd,nan,False,baseline,-1,burst_baseline_000.txt,0,nan,nan,1785244324.33397,nan,nan

@@ -57,19 +57,21 @@ Run every command from the bundle's root with the virtual environment's Python (
 | Fig. 7 (thermal collapse) | `paper/figures/make_revision_figures.py thermal_paper` | `ctl_thermal_*.log` (four ramps per unit and the two-ramp control) |
 | Fig. 8; Section V-E (real drift) | `twin/analysis/p1_m3_audit.py tools/data/m3_real_unitA_20261016_024528 --delays` (and `..._unitB_20261012_231635`); `paper/figures/make_revision_figures.py m3_drift` | `m3_real_unit*/`, `ctl_m3_real_*`, `r1_burst_repeatability_m3_real_*` |
 | Fig. 9 (transfer) | `paper/figures/make_revision_figures.py transfer_paper` | the coefficient sets of Table II |
+| Table IV (uncertainty budget of the guard) | `twin/analysis/p1_uncertainty_budget.py` | the calibration sets and the burst record |
+| Table VI, Section VI (rules for the first trusted reading) | `twin/analysis/p1_benchmark_revision.py`, with `--fine` (the slope rule's finer grid) and `--moving` (the sensor moving) | the burst record |
+| Section III-F (record checks: 4508 bursts, late first valid frames, the start-up rule) | `twin/analysis/p1_revision_checks.py` | the burst record |
+| The slow term b_s (Sections II-B, III-B) | `twin/analysis/p1_slow_term_october.py` | the burst record |
 
 `make_revision_figures.py` with no argument draws every figure; it also draws `recovery_raw.pdf`,
 which the paper does not use. Fig. 1 is a diagram and Fig. 2 a photograph of the bench.
 
-The scripts behind Table IV (`p1_uncertainty_budget.py`), Table VI and Section VI
-(`p1_benchmark_revision.py`, with `--fine` and `--moving`), the record checks of Section III-F
-(`p1_revision_checks.py`) and the slow term (`p1_slow_term_october.py`) are included. They read the
-burst record of July 6 to October 3, 2026, which this version does not include (see below).
+"The burst record" is every power-down burst captured from July 6 to October 3, 2026: 4508 bursts
+in 183 run folders under `tools/data/`, found by the scripts from the folder names and capture
+dates (`p1_revision_checks.record_runs`). Many of these runs were taken in deliberately provoked
+states for a companion study; the paper uses them only as the record of wakes.
 
 ## What's not here, and why
 
-- The burst record of July 6 to October 3, 2026 (the power-down bursts of 183 runs). Many of
-  these runs are experiments of a companion study in preparation. Available on request.
 - The logs of the controller campaign (Section V-D). The controller is the subject of a separate
   paper; its code and the logs of its comparisons are in that paper's bundle,
   [github.com/MaivaSoftwares/adaptiveControl](https://github.com/MaivaSoftwares/adaptiveControl).

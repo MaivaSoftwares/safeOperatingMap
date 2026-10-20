@@ -1,0 +1,78 @@
+bursts 4561 in 234 runs, 2026-07-06 to 2026-10-03; by mode {'pd': 4508, 'rail_off': 46, 'vddio': 7}
+
+== R3-1: a frozen calibration guard against the transient measured later (run medians)
+unit A: 91 runs on 12 days, 2026-07-06 to 2026-10-03; frozen guard 12.79 ms
+  b0 run medians 16.8 to 174.0 mg (x10.4); tau 1.352 to 1.569 ms
+  guard needed 10.25 to 13.92 ms
+  frozen guard leaves more than the 0.85 mg budget in 43 of 91 runs, more than the 1 mg tolerance in 23 (25 %); worst 1.85 mg
+  20 ms start-up guard: worst residual 0.0159 mg
+       runs     b0   tau  need_max  res_max
+t                                          
+07-06     1  82.71  1.45     12.82     0.87
+07-19     3  63.81  1.45     12.53     0.71
+07-20     8  52.32  1.50     12.80     0.86
+07-21     2  46.59  1.47     12.17     0.56
+07-24     1  16.78  1.37     10.26     0.13
+07-28    10  50.41  1.47     13.52     1.40
+07-29    28  69.68  1.46     13.83     1.66
+07-30    17  71.32  1.46     13.16     1.09
+07-31     1  72.84  1.46     12.69     0.79
+08-03     1  95.82  1.47     13.10     1.05
+10-02     1  91.95  1.45     12.96     0.95
+10-03    18  92.15  1.46     13.92     1.85
+unit B: 46 runs on 9 days, 2026-07-12 to 2026-10-02; frozen guard 10.69 ms
+  b0 run medians 21.1 to 93.0 mg (x4.4); tau 1.244 to 1.533 ms
+  guard needed 10.40 to 13.11 ms
+  frozen guard leaves more than the 0.85 mg budget in 38 of 46 runs, more than the 1 mg tolerance in 33 (72 %); worst 4.40 mg
+  20 ms start-up guard: worst residual 0.0090 mg
+       runs     b0   tau  need_max  res_max
+t                                          
+07-12     2  38.28  1.29     11.44     1.52
+07-15     2  45.99  1.32     12.04     2.33
+07-16     4  28.69  1.33     11.05     1.11
+07-17     4  27.90  1.31     10.81     0.93
+07-19     1  80.45  1.32     12.18     2.64
+07-20     2  22.88  1.33     10.68     0.85
+09-23     5  45.50  1.32     11.72     1.80
+09-24    24  70.19  1.46     13.11     4.40
+10-02     2  45.43  1.35     11.71     1.84
+
+== Sec. III-F: pd bursts 4508; first valid later than 6.25 ms in 49
+  first-valid times (ms): [  6.33   6.33   6.33   6.33   6.33   6.33   6.33   6.33   6.33   6.33
+   7.4    7.4    7.4    7.42   7.43   7.43   7.43   7.43   7.43   7.43
+   7.43   7.43   7.43   7.43   7.8    8.25   8.25   8.25   9.08   9.48
+   9.48   9.48   9.48   9.48   9.48  10.68  11.91  11.91  11.91  11.91
+  11.91  11.91  11.91  13.13  14.36  14.37  14.83 390.5  572.29]
+  bursts needing more than the 20 ms start-up guard: 15 (13 of them with a late first valid)
+                                                                       run         raw_file  b0_mg  tau_ms  fv_ms  need_ms
+     r1_burst_repeatability_unitB_postfault_check_20260923_20260923_161515 burst_pd_004.txt  34.23    1.30 572.29   577.09
+  r1_burst_repeatability_a_durationsweep_baseline_20260730_20260730_165049 burst_pd_002.txt  74.72    1.49 390.50   397.15
+r1_burst_repeatability_unitA_coldstart_conditioning_check2_20260731_135435 burst_pd_046.txt 108.51    5.22   6.17    31.46
+                              r1_burst_repeatability_unitA_20261003_011242 burst_pd_001.txt 405.96    1.50  14.36    23.64
+                              r1_burst_repeatability_unitA_20261003_011242 burst_pd_000.txt 410.09    1.47  14.37    23.46
+r1_burst_repeatability_unitA_coldstart_conditioning_check2_20260721_112957 burst_pd_083.txt  30.03    6.35   0.03    22.68
+                              r1_burst_repeatability_unitA_20261003_011242 burst_pd_002.txt 320.51    1.52  13.13    22.16
+     r1_burst_repeatability_unitB_postfault_check_20260923_20260923_161255 burst_pd_001.txt 122.58    1.34  14.83    21.48
+                              r1_burst_repeatability_unitA_20261003_011242 burst_pd_009.txt 293.38    1.52  11.91    20.82
+                              r1_burst_repeatability_unitA_20261003_011242 burst_pd_007.txt 290.28    1.52  11.91    20.76
+                              r1_burst_repeatability_unitA_20261003_011242 burst_pd_003.txt 290.80    1.52  11.91    20.76
+                              r1_burst_repeatability_unitA_20261003_011242 burst_pd_005.txt 288.86    1.51  11.91    20.70
+                              r1_burst_repeatability_unitA_20261003_011242 burst_pd_008.txt 287.93    1.50  11.91    20.63
+                              r1_burst_repeatability_unitA_20261003_011242 burst_pd_004.txt 291.65    1.49  11.91    20.61
+                              r1_burst_repeatability_unitA_20261003_011242 burst_pd_006.txt 275.95    1.50  11.91    20.57
+  time needed AFTER the first valid sample (tau in band): max 10.27 ms, 99.9th pct 9.19 ms
+
+== Sec. IV-A: rail_off recovery, mean of 30 bursts (r1_burst_repeatability_unitA_r1_burst_railoff_n30_supporting_20260706_211949)
+  first valid 11.41 ms; amplitude there 7.53 mg; tau 1.575 ms; noise of the mean 0.29 mg
+  reaches the 0.85 mg budget 14.85 ms after the wake command
+  at  12.8 ms: fitted residual 3.11 mg; measured mean over the next 5 ms -1.01 mg (se 0.24)
+  at  14.6 ms: fitted residual 0.99 mg; measured mean over the next 5 ms -0.49 mg (se 0.09)
+  at  15.4 ms: fitted residual 0.60 mg; measured mean over the next 5 ms -0.36 mg (se 0.06)
+  at  20.0 ms: fitted residual 0.03 mg; measured mean over the next 5 ms -0.16 mg (se 0.05)
+
+== R3-2: slow term in every pd run with at least 20 normal-grid bursts (47 runs)
+unit A: 38 runs; two-term model has the lower BIC in 33; slow term has the fast term's sign in 38
+  where supported: amplitude median 0.16 mg (10th to 90th pct 0.12 to 0.29); tau2 median 301 ms
+  bias at the run's own single-exponential guard under the two-term model: median 0.98, max 1.29 mg
+unit B: 9 runs; two-term model has the lower BIC in 0; slow term has the fast term's sign in 5
+  bias at the run's own single-exponential guard under the two-term model: median 0.91, max 1.08 mg

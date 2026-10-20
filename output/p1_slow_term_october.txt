@@ -1,0 +1,14 @@
+record unit A: valid pd bursts 3795; runs with >=20 bursts 38 holding 3239 bursts
+record unit B: valid pd bursts 661; runs with >=20 bursts 9 holding 269 bursts
+unit B, July calibration set: 30 bursts; noise of the mean 0.307 mg; main b0 26.9 mg tau 1.287 ms
+   slow amp 0.228 mg [0.076, 1.069]; tau2 22 ms [3, 2000]; dBIC +6.5; two-term preferred in 0 % of resamples; same sign 98 %
+   mean deviation 20-100 ms after first valid: -0.021 mg
+unit B, October (M1 + run M3, before the fault): 268 bursts; noise of the mean 0.101 mg; main b0 35.3 mg tau 1.333 ms
+   slow amp 0.043 mg [0.026, 0.137]; tau2 113 ms [29, 2000]; dBIC -0.1; two-term preferred in 8 % of resamples; same sign 98 %
+   mean deviation 20-100 ms after first valid: -0.027 mg
+unit A, July calibration set: 30 bursts; noise of the mean 0.297 mg; main b0 82.6 mg tau 1.446 ms
+   slow amp 0.203 mg [0.162, 0.363]; tau2 229 ms [132, 1221]; dBIC -43.2; two-term preferred in 98 % of resamples; same sign 100 %
+   mean deviation 20-100 ms after first valid: -0.144 mg
+unit A, October (M1 + run M3-A so far): 382 bursts; noise of the mean 0.107 mg; main b0 57.0 mg tau 1.457 ms
+   slow amp 0.362 mg [0.151, 0.469]; tau2 2000 ms [435, 2000]; dBIC -177.5; two-term preferred in 100 % of resamples; same sign 100 %
+   mean deviation 20-100 ms after first valid: -0.027 mg

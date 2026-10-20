@@ -1,0 +1,60 @@
+
+=== unit A: calibration set r1_burst_repeatability_unitA_r1_burst_pd_n30_reprocessed_20260706_203023 (30 bursts) ===
+b0 82.71 mg (sd 1.77), tau 1.4520 ms (sd 0.0291), t_fv 6.174 ms (sd 0.0008); correlation of b0 and tau -0.50
+guard from the medians: 12.82 ms
+                                                            source type standard uncertainty  sensitivity contribution_ms
+                      b0 (amplitude at first valid), repeatability    A              0.32 mg 0.0176 ms/mg          0.0057
+                                tau (time constant), repeatability    A            0.0053 ms         4.58          0.0243
+                          t_fv (first valid sample), repeatability    A            0.0001 ms            1          0.0001
+b0 and tau together (correlation -0.50), bootstrap over the bursts    A                                            0.0351
+                                          scale factor (enters b0)    B               0.29 %     1.452 ms          0.0042
+                    resolution of the logged samples (0.1 mg step)    B             0.029 mg 0.0176 ms/mg          0.0005
+                                  node clock (value in SI seconds)    B               2.15 %     12.82 ms          0.2759
+combined standard uncertainty on the node's own clock (bootstrap row and the Type B rows without the clock): 0.035 ms; expanded, k = 2: 0.07 ms
+in SI seconds, with the clock's data-sheet limits: 0.278 ms; expanded, k = 2: 0.56 ms
+law of propagation with the correlation term, for comparison with the bootstrap: 0.0220 ms
+
+not uncertainty of the calibration value, reported next to it:
+  need of a single wake within the calibration session: sd 0.12 ms, 95 % of wakes 12.58 to 13.01 ms
+  need from session to session (62 runs of 10 bursts or more, to 2026-10-03): median 12.84 ms, sd 0.44 ms, 5-95 % 12.13 to 13.47, range 11.97 to 13.91 ms
+  model form: a slow term of 0.21 mg; carried in the budget it lengthens the guard by 0.41 ms (to 13.23 ms)
+  settled level from wake to wake (1 s sleeps; 48 runs, 2705 bursts): median within-run sd 0.075 mg, 95th percentile 0.610 mg
+
+temperature term (static bias kappa_b x dtheta inside the budget):
+ dtheta_C  term_mg  guard_ms  u_term_mg  u_guard_ms
+      0.0    0.000    12.821      0.000       0.001
+      2.0    0.151    13.105      0.006       0.013
+      5.0    0.378    13.674      0.016       0.048
+      8.0    0.604    14.621      0.025       0.148
+collapse swing (1 - delta) eps / |kappa_b| = 11.26 degC, standard uncertainty 0.45 degC from kappa_b alone
+
+=== unit B: calibration set r1_burst_repeatability_unitB_r1_burst_pd_n30_20260712_232025 (30 bursts) ===
+b0 27.14 mg (sd 1.64), tau 1.2969 ms (sd 0.1232), t_fv 6.195 ms (sd 0.0000); correlation of b0 and tau -0.38
+guard from the medians: 10.69 ms
+                                                            source type standard uncertainty  sensitivity contribution_ms
+                      b0 (amplitude at first valid), repeatability    A              0.30 mg 0.0478 ms/mg          0.0144
+                                tau (time constant), repeatability    A            0.0225 ms         3.46          0.0779
+                          t_fv (first valid sample), repeatability    A            0.0000 ms            1          0.0000
+b0 and tau together (correlation -0.38), bootstrap over the bursts    A                                            0.0957
+                                          scale factor (enters b0)    B               0.29 %     1.297 ms          0.0037
+                    resolution of the logged samples (0.1 mg step)    B             0.029 mg 0.0478 ms/mg          0.0014
+                                  node clock (value in SI seconds)    B               2.15 %     10.69 ms          0.2300
+combined standard uncertainty on the node's own clock (bootstrap row and the Type B rows without the clock): 0.096 ms; expanded, k = 2: 0.19 ms
+in SI seconds, with the clock's data-sheet limits: 0.249 ms; expanded, k = 2: 0.50 ms
+law of propagation with the correlation term, for comparison with the bootstrap: 0.0736 ms
+
+not uncertainty of the calibration value, reported next to it:
+  need of a single wake within the calibration session: sd 0.40 ms, 95 % of wakes 10.05 to 11.39 ms
+  need from session to session (41 runs of 10 bursts or more, to 2026-10-03): median 11.56 ms, sd 0.93 ms, 5-95 % 10.46 to 12.93, range 10.39 to 13.14 ms
+  model form: no slow term resolved on this unit
+  settled level from wake to wake (1 s sleeps; 42 runs, 589 bursts): median within-run sd 0.094 mg, 95th percentile 0.515 mg
+
+temperature term (static bias kappa_b x dtheta inside the budget):
+ dtheta_C  term_mg  guard_ms  u_term_mg  u_guard_ms
+      0.0    0.000    10.687      0.000       0.000
+      2.0    0.138    10.916      0.010       0.018
+      5.0    0.344    11.361      0.024       0.062
+      8.0    0.551    12.043      0.039       0.169
+collapse swing (1 - delta) eps / |kappa_b| = 12.34 degC, standard uncertainty 0.86 degC from kappa_b alone
+
+node clock against the host computer's (m3_real_unitB_20261012_231635, 43 segments, die 20.9 to 25.2 degC): node/host 0.97305 (sd 0.14315, 0.10628 to 1.00177); one segment reads to about 0.029 %
