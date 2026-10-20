@@ -1,3 +1,23 @@
+=== Table IV (revision): pd guard at dtheta = 0, budget left to the transient 0.85 - 0.21 = 0.64 mg; contributions in ms ===
+unit A: r1_burst_repeatability_unitA_r1_burst_pd_n30_reprocessed_20260706_203023 (30 bursts); means b0 82.59 mg, tau 1.4488 ms, t_fv 6.174 ms; correlation of b0 and tau -0.50
+unit B: r1_burst_repeatability_unitB_r1_burst_pd_n30_20260712_232025 (30 bursts); means b0 26.90 mg, tau 1.2987 ms, t_fv 6.195 ms; correlation of b0 and tau -0.38
+source                                                                  type          unit A        unit B
+b0, tau, t_fv, repeatability (30 bursts)                                A              0.024         0.080
+slow term b_s (u = 0.036 mg; sensitivity tau/0.64 mg)                   A/B            0.081         0.073
+scale factor (+-0.5 %)                                                  B              0.004         0.004
+sample resolution (0.1 mg)                                              B             0.0005        0.0014
+combined, node clock                                                                   0.085         0.108
+expanded (k = 2)                                                                        0.17          0.22
+node clock in SI seconds (u = 2.15 %; limits combined +-3.73 %)         B               0.28          0.24
+combined in SI seconds (k = 2)                                                   0.30 (0.59)   0.26 (0.52)
+guard, Eq. (3)                                                                         13.22         11.05
+check, bootstrap of the means over the bursts in place of the first row: combined 0.085 ms (A), 0.108 ms (B)
+reported beside the budget:
+  unit A: need of a single wake in the calibration session sd 0.13 ms, 95 % of wakes 12.98 to 13.44 ms; session to session (62 runs) sd 0.44 ms, median 13.26 ms
+  unit B: need of a single wake in the calibration session sd 0.44 ms, 95 % of wakes 10.37 to 11.82 ms; session to session (41 runs) sd 0.95 ms, median 11.92 ms
+  slow term from session to session, 0.12 to 0.29 mg: unit A's guard 13.02 to 13.41 ms
+
+=== as submitted: budget 0.85 mg, guard from the medians ===
 
 === unit A: calibration set r1_burst_repeatability_unitA_r1_burst_pd_n30_reprocessed_20260706_203023 (30 bursts) ===
 b0 82.71 mg (sd 1.77), tau 1.4520 ms (sd 0.0291), t_fv 6.174 ms (sd 0.0008); correlation of b0 and tau -0.50
@@ -57,4 +77,8 @@ temperature term (static bias kappa_b x dtheta inside the budget):
       8.0    0.551    12.043      0.039       0.169
 collapse swing (1 - delta) eps / |kappa_b| = 12.34 degC, standard uncertainty 0.86 degC from kappa_b alone
 
-node clock against the host computer's (m3_real_unitB_20261012_231635, 43 segments, die 20.9 to 25.2 degC): node/host 0.97305 (sd 0.14315, 0.10628 to 1.00177); one segment reads to about 0.029 %
+node clock against the host computer's, hourly controller segments of runs M3 that ran their full length:
+  m3_real_unitA_20261016_024528, all 62 segments (die 20.1 to 25.5 degC): node/host 1.00060 (sd 0.00058, 0.99946 to 1.00193); one segment reads to about 0.029 %
+  m3_real_unitA_20261016_024528, first 12 segments (die 23.0 to 25.5 degC): node/host 1.00133 (sd 0.00028, 1.00092 to 1.00193); one segment reads to about 0.029 %
+  m3_real_unitB_20261012_231635, all 41 segments (die 20.9 to 25.2 degC): node/host 1.00098 (sd 0.00040, 1.00016 to 1.00177); one segment reads to about 0.029 %
+  m3_real_unitB_20261012_231635, first 12 segments (die 21.8 to 23.3 degC): node/host 1.00094 (sd 0.00023, 1.00048 to 1.00129); one segment reads to about 0.029 %

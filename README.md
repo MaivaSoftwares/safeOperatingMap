@@ -57,7 +57,7 @@ Run every command from the bundle's root with the virtual environment's Python (
 | Fig. 7 (thermal collapse) | `paper/figures/make_revision_figures.py thermal_paper` | `ctl_thermal_*.log` (four ramps per unit and the two-ramp control) |
 | Fig. 8; Section V-E (real drift) | `twin/analysis/p1_m3_audit.py tools/data/m3_real_unitA_20261016_024528 --delays` (and `..._unitB_20261012_231635`); `paper/figures/make_revision_figures.py m3_drift` | `m3_real_unit*/`, `ctl_m3_real_*`, `r1_burst_repeatability_m3_real_*` |
 | Fig. 9 (transfer) | `paper/figures/make_revision_figures.py transfer_paper` | the coefficient sets of Table II |
-| Table IV (uncertainty budget of the guard) | `twin/analysis/p1_uncertainty_budget.py` | the calibration sets and the burst record |
+| Table IV (uncertainty budget of the guard, printed first; the budget as submitted after it); Section III-F (the node's clock against the host's) | `twin/analysis/p1_uncertainty_budget.py` | the calibration sets, the burst record, `m3_real_unit*/` |
 | Table VI, Section VI (rules for the first trusted reading) | `twin/analysis/p1_benchmark_revision.py`, with `--fine` (the slope rule's finer grid) and `--moving` (the sensor moving) | the burst record |
 | Section III-F (record checks: 4508 bursts, late first valid frames, the start-up rule) | `twin/analysis/p1_revision_checks.py` | the burst record |
 | The slow term b_s (Sections II-B, III-B) | `twin/analysis/p1_slow_term_october.py` | the burst record |

@@ -15,6 +15,11 @@ seconds: the node measures the transient and times the guard with the same oscil
 totals are printed, on the node's own clock and in SI seconds, and beside them a direct
 comparison of the node's clock with the host computer's over the controller segments of run M3.
 
+Table IV of the revised manuscript is printed first (table_iv): the guard from the calibration
+means (as Table II) at the budget left to the transient once the slow term is taken out,
+(1 - delta) eps - b_s = 0.64 mg, with the slow term as its own row. The analysis printed after it
+is the budget as it stood at submission (0.85 mg, guard from the medians), kept for the record.
+
 Run: twin/.venv/bin/python twin/analysis/p1_uncertainty_budget.py
 """
 from __future__ import annotations
@@ -54,6 +59,14 @@ CLOCK_LIMITS_REL = dict(factory=0.01, temperature=0.035, supply=0.008)
 CLOCK_LIMIT_REL = math.sqrt(sum(v * v for v in CLOCK_LIMITS_REL.values()))
 # Slow term of the recovery, unit A (r3_2_recovery_models_2026-10-08.md); not resolved on unit B
 SLOW_MG = bm.SLOW_MG
+# Table IV: unit A's slow term, carried to unit B, comes out of the budget for the transient, and its
+# uncertainty is a row of the budget. u(b_s) from the 95 % interval of unit A's 30-burst bootstrap,
+# 0.16 to 0.30 mg (p1_recovery_models.py): (0.30 - 0.16) / (2 x 1.96) = 0.0357 mg, used as 0.036 mg,
+# the value Table IV quotes and p1_map_revision.py draws with. From session to session over the record
+# the slow term spans 0.12 to 0.29 mg (10th to 90th percentile, p1_revision_checks.py).
+B_SLOW_MG, U_B_SLOW_MG = 0.21, 0.036
+REV_BUDGET_MG = BUDGET_MG - B_SLOW_MG
+SLOW_SESSIONS_MG = (0.12, 0.29)
 # Bias temperature coefficient and its standard uncertainty, mg per degC (manuscript Table V)
 KAPPA = {"A": (0.0755, 0.0030), "B": (0.0689, 0.0048)}
 # Die-temperature read-out: 72 LSB per degC, non-linearity 2 % (MMS-30 data sheet, Table 1)
@@ -95,10 +108,79 @@ def type_a(cal: pd.DataFrame, reps: int = 4000, seed: int = 20261013) -> dict:
                 per_wake_lo=float(np.percentile(per_wake, 2.5)), per_wake_hi=float(np.percentile(per_wake, 97.5)))
 
 
-def between_sessions(record: list, unit: str, min_bursts: int = 10) -> dict:
+def table_iv(cal: pd.DataFrame, budget: float = REV_BUDGET_MG, reps: int = 4000, seed: int = 20261013) -> dict:
+    """Table IV of the revision. The guard from the calibration means at the budget left to the
+    transient; the Type A repeatability of b0, tau and t_fv by the GUM law of propagation with the
+    b0-tau correlation (GUM 5.2.2), the bootstrap of the means over the bursts as its check; the
+    slow term as its own row, with sensitivity tau / budget."""
+    n = len(cal)
+    m = cal.mean()
+    g = guard(m.b0, m.tau, m.fv, budget)
+    c_b0, c_tau = m.tau / m.b0, math.log(m.b0 / budget)
+    se = cal.std(ddof=1) / math.sqrt(n)
+    r = float(cal.b0.corr(cal.tau))
+    rows = dict(repeatability=math.sqrt((c_b0 * se.b0) ** 2 + (c_tau * se.tau) ** 2
+                                        + 2 * c_b0 * c_tau * se.b0 * se.tau * r + se.fv ** 2),
+                slow=m.tau / budget * U_B_SLOW_MG,
+                scale_factor=m.tau * SF_LIMIT_REL / SQRT3,
+                resolution=c_b0 * LOG_STEP_MG / (2 * SQRT3))
+    own = math.sqrt(sum(v * v for v in rows.values()))
+    clock = g * CLOCK_LIMIT_REL / SQRT3
+    rng = np.random.default_rng(seed)
+    boot = []
+    for _ in range(reps):
+        s = cal.iloc[rng.integers(0, n, n)].mean()
+        boot.append(guard(s.b0, s.tau, s.fv, budget))
+    own_boot = math.sqrt(np.var(boot, ddof=1) + sum(v * v for k, v in rows.items() if k != "repeatability"))
+    per_wake = np.array([guard(w.b0, w.tau, w.fv, budget) for w in cal.itertuples()])
+    return dict(n=n, b0=m.b0, tau=m.tau, fv=m.fv, corr=r, guard=g, rows=rows, own=own, clock=clock,
+                si=math.hypot(own, clock), own_boot=own_boot, per_wake_sd=float(per_wake.std(ddof=1)),
+                per_wake_lo=float(np.percentile(per_wake, 2.5)), per_wake_hi=float(np.percentile(per_wake, 97.5)),
+                slow_sessions=[guard(m.b0, m.tau, m.fv, BUDGET_MG - s) for s in SLOW_SESSIONS_MG])
+
+
+def print_table_iv(record: list) -> None:
+    t = {u: table_iv(calibration_bursts(record, u)) for u in ("A", "B")}
+    print(f"=== Table IV (revision): pd guard at dtheta = 0, budget left to the transient "
+          f"{BUDGET_MG:.2f} - {B_SLOW_MG:.2f} = {REV_BUDGET_MG:.2f} mg; contributions in ms ===")
+    for u in ("A", "B"):
+        a = t[u]
+        print(f"unit {u}: {CAL_RUNS[u]} ({a['n']} bursts); means b0 {a['b0']:.2f} mg, tau {a['tau']:.4f} ms, "
+              f"t_fv {a['fv']:.3f} ms; correlation of b0 and tau {a['corr']:+.2f}")
+    lines = [
+        ("b0, tau, t_fv, repeatability (30 bursts)", "A", lambda a: f"{a['rows']['repeatability']:.3f}"),
+        (f"slow term b_s (u = {U_B_SLOW_MG:.3f} mg; sensitivity tau/{REV_BUDGET_MG:.2f} mg)", "A/B",
+         lambda a: f"{a['rows']['slow']:.3f}"),
+        (f"scale factor (+-{100 * SF_LIMIT_REL:.1f} %)", "B", lambda a: f"{a['rows']['scale_factor']:.3f}"),
+        (f"sample resolution ({LOG_STEP_MG} mg)", "B", lambda a: f"{a['rows']['resolution']:.4f}"),
+        ("combined, node clock", "", lambda a: f"{a['own']:.3f}"),
+        ("expanded (k = 2)", "", lambda a: f"{2 * a['own']:.2f}"),
+        (f"node clock in SI seconds (u = {100 * CLOCK_LIMIT_REL / SQRT3:.2f} %; limits combined "
+         f"+-{100 * CLOCK_LIMIT_REL:.2f} %)", "B", lambda a: f"{a['clock']:.2f}"),
+        ("combined in SI seconds (k = 2)", "", lambda a: f"{a['si']:.2f} ({2 * a['si']:.2f})"),
+        ("guard, Eq. (3)", "", lambda a: f"{a['guard']:.2f}"),
+    ]
+    print(f"{'source':<72}{'type':<6}{'unit A':>14}{'unit B':>14}")
+    for name, typ, f in lines:
+        print(f"{name:<72}{typ:<6}{f(t['A']):>14}{f(t['B']):>14}")
+    print("check, bootstrap of the means over the bursts in place of the first row: combined "
+          + ", ".join(f"{t[u]['own_boot']:.3f} ms ({u})" for u in ("A", "B")))
+    print("reported beside the budget:")
+    for u in ("A", "B"):
+        a = t[u]
+        s = between_sessions(record, u, budget=REV_BUDGET_MG)
+        print(f"  unit {u}: need of a single wake in the calibration session sd {a['per_wake_sd']:.2f} ms, 95 % of "
+              f"wakes {a['per_wake_lo']:.2f} to {a['per_wake_hi']:.2f} ms; session to session ({s['runs']} runs) sd "
+              f"{s['sd']:.2f} ms, median {s['median']:.2f} ms")
+    lo, hi = t["A"]["slow_sessions"]
+    print(f"  slow term from session to session, {SLOW_SESSIONS_MG[0]} to {SLOW_SESSIONS_MG[1]} mg: unit A's guard "
+          f"{lo:.2f} to {hi:.2f} ms")
+
+
+def between_sessions(record: list, unit: str, min_bursts: int = 10, budget: float | None = None) -> dict:
     """The need of each run of the record (median over its bursts): how far the guard has to move
     from session to session. Many runs were taken in provoked states."""
-    need = np.array([1e3 * np.median([b.need() for b in bs])
+    need = np.array([1e3 * np.median([b.need(budget) for b in bs])
                      for bs in bm.by_run(record, unit, min_bursts).values()])
     return dict(runs=len(need), median=float(np.median(need)), sd=float(need.std(ddof=1)),
                 lo=float(need.min()), hi=float(need.max()),
@@ -140,19 +222,25 @@ def budget(unit: str, a: dict) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=["source", "type", "standard uncertainty", "sensitivity", "contribution_ms"])
 
 
-def clock_against_host(run_glob: str = "m3_real_unit*") -> dict | None:
-    """Node time against host time over the finished controller segments of run M3: the last
-    cycle's node time divided by the segment's requested host duration. The driver starts its
-    clock about 0.4 s after the start command, and the last logged cycle falls within about a
-    second of the end, so one segment reads to about 1 s in its length."""
-    runs_ = sorted(bm.runs.DATA.glob(run_glob))
-    if not runs_:
+def clock_against_host(run: Path, first: int | None = None) -> dict | None:
+    """Node time against host time over the controller segments of a run M3: the last cycle's node
+    time divided by the segment's requested host duration. The driver starts its clock about 0.4 s
+    after the start command, and the last logged cycle falls within about a second of the end, so
+    one segment reads to about 1 s in its length. Only a segment that ran its requested length is
+    used: the host time from the step before it to its own end (the event log, to 1 s, with a few
+    seconds of stop and read-out) must cover the request. `first` keeps the first segments only."""
+    if not (run / "events.csv").is_file():
         return None
     ratio, temp, length = [], [], []
-    for r in csv.DictReader((runs_[-1] / "events.csv").open()):
+    prev = None
+    for r in csv.DictReader((run / "events.csv").open()):
+        t_end, t_start = pd.Timestamp(r["time"]), prev
+        prev = pd.Timestamp(r["time"])
         m = re.match(r"controller (\d+) s", r["step"])
         log = bm.runs.DATA / Path(r["detail"]).name
         if not (m and r["rc"] == "0" and log.is_file()):
+            continue
+        if t_start is None or (t_end - t_start).total_seconds() < float(m.group(1)):
             continue
         last, temps, stopped = None, [], False
         for ln in log.read_text(errors="ignore").splitlines():
@@ -167,10 +255,12 @@ def clock_against_host(run_glob: str = "m3_real_unit*") -> dict | None:
             ratio.append(1e-3 * last / (float(m.group(1)) + 0.4))
             temp.append(float(np.median(temps)))
             length.append(float(m.group(1)))
+    if first is not None:
+        ratio, temp, length = ratio[:first], temp[:first], length[:first]
     if len(ratio) < 2:
         return None
     ratio = np.array(ratio)
-    return dict(run=runs_[-1].name, n=len(ratio), mean=float(ratio.mean()), sd=float(ratio.std(ddof=1)),
+    return dict(run=run.name, n=len(ratio), mean=float(ratio.mean()), sd=float(ratio.std(ddof=1)),
                 lo=float(ratio.min()), hi=float(ratio.max()), reading=1.0 / float(np.median(length)),
                 temp_lo=min(temp), temp_hi=max(temp))
 
@@ -192,6 +282,8 @@ def temperature_rows(unit: str, a: dict) -> pd.DataFrame:
 def report() -> None:
     record = bm.load_record("pd")
     pd.set_option("display.width", 200, "display.max_colwidth", 80)
+    print_table_iv(record)
+    print("\n=== as submitted: budget 0.85 mg, guard from the medians ===")
     for unit in ("A", "B"):
         cal = calibration_bursts(record, unit)
         a = type_a(cal)
@@ -233,11 +325,14 @@ def report() -> None:
               f"{BUDGET_MG / k * uk / k:.2f} degC from kappa_b alone")
 
 
-    c = clock_against_host()
-    if c:
-        print(f"\nnode clock against the host computer's ({c['run']}, {c['n']} segments, die {c['temp_lo']:.1f} to "
-              f"{c['temp_hi']:.1f} degC): node/host {c['mean']:.5f} (sd {c['sd']:.5f}, {c['lo']:.5f} to {c['hi']:.5f}); "
-              f"one segment reads to about {100 * c['reading']:.3f} %")
+    print("\nnode clock against the host computer's, hourly controller segments of runs M3 that ran their full length:")
+    for run in sorted(bm.runs.DATA.glob("m3_real_unit*")):
+        for first in (None, 12):
+            c = clock_against_host(run, first)
+            if c:
+                print(f"  {c['run']}, {'all' if first is None else 'first'} {c['n']} segments (die {c['temp_lo']:.1f} to "
+                      f"{c['temp_hi']:.1f} degC): node/host {c['mean']:.5f} (sd {c['sd']:.5f}, {c['lo']:.5f} to "
+                      f"{c['hi']:.5f}); one segment reads to about {100 * c['reading']:.3f} %")
 
 
 if __name__ == "__main__":
