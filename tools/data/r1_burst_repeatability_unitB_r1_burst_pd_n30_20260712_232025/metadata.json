@@ -1,0 +1,19 @@
+{
+  "label": "unitB_r1_burst_pd_n30",
+  "unit": "B",
+  "started_at": "20260712_232025",
+  "port": "/dev/ttyACM0",
+  "baud": 115200,
+  "modes": [
+    "pd"
+  ],
+  "runs": 30,
+  "sleep_ms": 1000,
+  "n": 2000,
+  "gap_s": 3.0,
+  "p_on_W": 0.067,
+  "eps_g": 0.001,
+  "delta": 0.15,
+  "notes": "",
+  "bench_setup": "axis horizontal/near 0 g; rigid mount; do not touch during run"
+}

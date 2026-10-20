@@ -1,0 +1,80 @@
+  (rescued: trimmed 504s flat cool-back tail — die had returned to 26.6 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 0.30 mg  @ heating rate 4.14 °C/min (cooling 1.21, overlap 5.7 °C, n=3421) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 3.4x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+  (rescued: trimmed 530s flat cool-back tail — die had returned to 26.7 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 0.42 mg  @ heating rate 3.92 °C/min (cooling 1.35, overlap 5.6 °C, n=3200) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 2.9x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+  (rescued: trimmed 512s flat cool-back tail — die had returned to 26.8 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 0.44 mg  @ heating rate 3.92 °C/min (cooling 1.20, overlap 5.6 °C, n=3351) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 3.3x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+  (rescued: trimmed 541s flat cool-back tail — die had returned to 26.4 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 0.19 mg  @ heating rate 8.68 °C/min (cooling 1.27, overlap 6.1 °C, n=3099) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 6.8x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+  (rescued: trimmed 568s flat cool-back tail — die had returned to 26.9 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 1.06 mg  @ heating rate 6.17 °C/min (cooling 1.39, overlap 5.7 °C, n=2863) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 4.4x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h EXCEEDS the 1 mg budget at this ramp rate — slow the ramp
+  (rescued: trimmed 559s flat cool-back tail — die had returned to 27.0 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 0.98 mg  @ heating rate 5.91 °C/min (cooling 1.38, overlap 5.8 °C, n=2947) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 4.3x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+  (rescued: trimmed 577s flat cool-back tail — die had returned to 27.1 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 0.50 mg  @ heating rate 6.83 °C/min (cooling 1.38, overlap 5.8 °C, n=2789) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 4.9x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+  (rescued: trimmed 564s flat cool-back tail — die had returned to 27.1 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 0.45 mg  @ heating rate 7.06 °C/min (cooling 1.35, overlap 6.0 °C, n=2903) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 5.2x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+=== loop-width hysteresis: h = 0.14 mg  @ heating rate 1.38 °C/min (cooling 0.40, overlap 6.0 °C, n=7766) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 3.5x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+  (rescued: trimmed 577s flat cool-back tail — die had returned to 26.7 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 0.50 mg  @ heating rate 9.19 °C/min (cooling 1.35, overlap 5.7 °C, n=2781) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 6.8x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+  (rescued: trimmed 528s flat cool-back tail — die had returned to 26.7 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 0.34 mg  @ heating rate 7.72 °C/min (cooling 1.19, overlap 5.9 °C, n=3200) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 6.5x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+  (rescued: trimmed 484s flat cool-back tail — die had returned to 26.2 °C, no hysteresis beyond it)
+=== loop-width hysteresis: h = 0.54 mg  @ heating rate 3.70 °C/min (cooling 1.06, overlap 5.5 °C, n=3585) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 3.5x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+=== loop-width hysteresis: h = 0.36 mg  @ heating rate 3.03 °C/min (cooling 0.30, overlap 6.1 °C, n=7756) ===
+  !! ASYMMETRIC RAMP: heating/cooling differ 10.1x (passive coast) — h is the heating-leg lag vs a slow cooling reference; plot it at rate_up, not a symmetric rate.
+  h < 1 mg budget — rate OK for this ramp
+13 ramps (budget left after b_s: 0.64 mg)
+  A   1.38 C/min  h = 0.14 mg  temp_log_unitA_hyst_slow.csv
+  A   3.92 C/min  h = 0.44 mg  temp_log_unitA_hyst_brisk3.csv
+  A   3.92 C/min  h = 0.42 mg  temp_log_unitA_hyst_brisk2.csv
+  A   4.14 C/min  h = 0.30 mg  temp_log_unitA_hyst_brisk1.csv
+  A   5.91 C/min  h = 0.98 mg  temp_log_unitA_hyst_fastrep2.csv
+  A   6.17 C/min  h = 1.06 mg  temp_log_unitA_hyst_fastrep1.csv
+  A   6.83 C/min  h = 0.50 mg  temp_log_unitA_hyst_fastrep3.csv
+  A   7.06 C/min  h = 0.45 mg  temp_log_unitA_hyst_fastrep4.csv
+  A   8.68 C/min  h = 0.19 mg  temp_log_unitA_hyst_fast1.csv
+  B   3.03 C/min  h = 0.36 mg  temp_log_unitB_hyst_mid2.csv
+  B   3.70 C/min  h = 0.54 mg  temp_log_unitB_hyst_mid1.csv
+  B   7.72 C/min  h = 0.34 mg  temp_log_unitB_hyst_fast2.csv
+  B   9.19 C/min  h = 0.50 mg  temp_log_unitB_hyst_fast1.csv
+
+h for rate <= 4 C/min: max 0.54 mg; all ramps: max 1.06 mg
+r_max, unit A: >= 4.14 C/min and < 5.91
+r_max, unit B: >= 9.19 C/min (no tested ramp over the budget)
+
+first trusted reading under the steady-temperature guard, (1-delta) eps + h (eps = 1.00 mg):
+  h = delta eps    h = 0.15 mg -> 1.00 mg (+0.00 against eps)
+  h <= 4 C/min     h = 0.54 mg -> 1.39 mg (+0.39 against eps)
+  campaign max     h = 1.06 mg -> 1.91 mg (+0.91 against eps)
+  ramps with h <= delta eps: [('A', 1.3779209237004804, 0.13749544322939114)]
+
+guards (ms), steady (h = 0) and carrying h = 0.54 mg in the budget:
+  A pd       steady  13.21   with loop  15.90   1/(2(Tg+Tp)) = 27.45 Hz
+  A rail_off steady  15.29   with loop  18.22   1/(2(Tg+Tp)) = 24.64 Hz
+  B pd       steady  11.06   with loop  13.47   1/(2(Tg+Tp)) = 31.14 Hz
+  B rail_off steady  13.22   with loop  15.11   1/(2(Tg+Tp)) = 27.45 Hz

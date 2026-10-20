@@ -1,0 +1,6 @@
+b0_g,b0_signed_g,burst_rate_hz,diag_b0_g,diag_first_valid_us,diag_noise_g,diag_tau_bias_s,error,first_valid_us,fit_n,guard_s,mode,noise_g,ok,raw_file,raw_peak_abs_g,raw_valid_n,run,settled_g,tail_median_g,tail_std_g,tau_bias_s,valid_window_s
+nan,nan,2430.0,3.2061446771419914e-06,2082.0,4.6989592651198225e-05,0.021468342320086736,,nan,3,nan,pd,nan,False,burst_pd_000.txt,0.0023,3,0,nan,-0.0023,0.0005656854249492379,nan,0.360078
+nan,nan,2430.0,8.098591552313525e-06,27.0,0.0001362393973059847,278152381.1417373,,nan,2,nan,pd,nan,False,burst_pd_001.txt,0.0023,2,1,nan,-0.0023,0.0,nan,0.3399209999999999
+nan,nan,2429.0,-0.0005405904061230074,4546.0,0.012573812108622186,241517006.23940027,,nan,1,nan,pd,nan,False,burst_pd_002.txt,0.293,1,2,nan,0.293,0.0,nan,nan
+nan,nan,2430.0,4.085257550198636e-06,27.0,9.684731815132616e-05,312227486.2969683,,nan,3,nan,pd,nan,False,burst_pd_003.txt,0.0023,3,3,nan,-0.0023,0.0,nan,0.420157
+nan,nan,2429.0,0.000518273876276766,11132.0,0.01243714029896314,1072807.6586312912,,nan,6,nan,pd,nan,False,burst_pd_004.txt,0.293,6,4,nan,-0.0017000000000000001,0.10768007656427854,nan,0.780633

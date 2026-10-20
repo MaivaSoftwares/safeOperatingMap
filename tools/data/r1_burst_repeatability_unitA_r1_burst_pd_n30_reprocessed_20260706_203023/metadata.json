@@ -1,0 +1,23 @@
+{
+  "label": "unitA_r1_burst_pd_n30",
+  "unit": "A",
+  "started_at": "20260706_201417",
+  "port": "COM5",
+  "baud": 115200,
+  "modes": [
+    "pd"
+  ],
+  "runs": 30,
+  "sleep_ms": 1000,
+  "n": 2000,
+  "gap_s": 3.0,
+  "p_on_W": 0.067,
+  "eps_g": 0.001,
+  "delta": 0.15,
+  "notes": "Campaign R1 Unit A burst repeatability, pd visible-peak mode",
+  "bench_setup": "axis horizontal/near 0 g; rigid mount; do not touch during run",
+  "reprocessed_at": "20260706_203023",
+  "source_dir": "(local folder)",
+  "primary_fit_policy": "drdy=1, err=0, abs(accel_g)<1.0; b0 stored positive for guard, b0_signed_g keeps direction",
+  "diagnostic_fit_policy": "drdy=1, err ignored, abs(accel_g)<1.0"
+}

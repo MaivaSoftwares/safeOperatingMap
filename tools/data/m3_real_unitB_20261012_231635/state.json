@@ -1,0 +1,32 @@
+{
+  "args": {
+    "unit": "B",
+    "label": "real",
+    "port": "/dev/serial/by-id/usb-STMicroelectronics_STM32_STLink_02040212523100093638414B-if02",
+    "period_s": 3600.0,
+    "periods": 168,
+    "bursts": 5,
+    "railoff_every": 24,
+    "railoff_n": 30,
+    "rest_at": 49,
+    "rest_len": 8,
+    "tc": -689,
+    "rodelay_us": 2100,
+    "resume": ""
+  },
+  "t0_epoch": 1791818195.9780986,
+  "t0": "2026-10-12 23:16:35",
+  "next_period": 55,
+  "rest_started": "2026-10-15 00:17:36",
+  "rest_ended": "",
+  "interruptions": [
+    {
+      "resumed": "2026-10-13 16:16:48",
+      "cut_period": 15,
+      "missed": [
+        16
+      ],
+      "resume_period": 17
+    }
+  ]
+}

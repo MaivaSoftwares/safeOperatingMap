@@ -1,0 +1,14 @@
+{
+  "label": "unitA_r1_inrush_pd_n10_shunt1p00",
+  "unit": "A",
+  "mode": "pd",
+  "started_at": "20261017_022914",
+  "input_dir": "tools/data/pd_scope",
+  "n": 10,
+  "shunt_ohm": 1.0,
+  "voltage_v": 5.019,
+  "pre_end_s": -0.001,
+  "steady_start_s": 0.006,
+  "notes": "C-7 (2026-10-17): shunt 1.00 ohm (meter 1.1 ohm minus 0.1 ohm leads; bands 10 x 10.0 ohm +/-2 %); same captures and settings as the July extraction",
+  "processing": "E_inrush integrates positive excess above post-wake steady active shunt voltage; tau_eff = E/(Vrail*I_peak_excess)."
+}

@@ -1,0 +1,4 @@
+                                  quantity median [2.5 %, 97.5 %]
+      largest B_mon with a saving, pd (Hz)      25.8 [25.4, 26.2]
+largest B_mon with a saving, rail_off (Hz)      20.7 [20.3, 21.1]
+-> tools/data/r3_map_uncertainty_unitA_rev/bandwidth_with_saving.csv

@@ -1,0 +1,207 @@
+time,period,step,rc,detail
+2026-10-12 23:16:37,0,CTL STOP,0,WARN: CTL not running
+2026-10-12 23:17:35,0,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p000_pd_20261012_231637
+2026-10-12 23:23:18,0,bursts rail_off n=30,0,tools/data/r1_burst_repeatability_m3_real_unitB_p000_rail_off_20261012_231736
+2026-10-12 23:24:17,0,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p000_pd_20261012_232319
+2026-10-12 23:24:18,0,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 00:15:57,0,controller 3094 s,0,tools/data/ctl_m3_real_unitB_p000_20261012_232418.log
+2026-10-13 00:16:37,1,CTL STOP,0,WARN: CTL not running
+2026-10-13 00:17:35,1,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p001_pd_20261013_001637
+2026-10-13 00:17:36,1,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 01:15:56,1,controller 3495 s,0,tools/data/ctl_m3_real_unitB_p001_20261013_001736.log
+2026-10-13 01:16:37,2,CTL STOP,0,WARN: CTL not running
+2026-10-13 01:17:35,2,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p002_pd_20261013_011637
+2026-10-13 01:17:36,2,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 02:15:57,2,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p002_20261013_011736.log
+2026-10-13 02:16:37,3,CTL STOP,0,WARN: CTL not running
+2026-10-13 02:17:35,3,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p003_pd_20261013_021637
+2026-10-13 02:17:36,3,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 03:15:57,3,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p003_20261013_021736.log
+2026-10-13 03:16:37,4,CTL STOP,0,WARN: CTL not running
+2026-10-13 03:17:35,4,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p004_pd_20261013_031637
+2026-10-13 03:17:36,4,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 04:15:57,4,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p004_20261013_031736.log
+2026-10-13 04:16:37,5,CTL STOP,0,WARN: CTL not running
+2026-10-13 04:17:35,5,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p005_pd_20261013_041637
+2026-10-13 04:17:36,5,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 05:15:57,5,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p005_20261013_041736.log
+2026-10-13 05:16:37,6,CTL STOP,0,WARN: CTL not running
+2026-10-13 05:17:35,6,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p006_pd_20261013_051637
+2026-10-13 05:17:36,6,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 06:15:57,6,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p006_20261013_051736.log
+2026-10-13 06:16:37,7,CTL STOP,0,WARN: CTL not running
+2026-10-13 06:17:35,7,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p007_pd_20261013_061637
+2026-10-13 06:17:36,7,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 07:15:57,7,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p007_20261013_061736.log
+2026-10-13 07:16:37,8,CTL STOP,0,WARN: CTL not running
+2026-10-13 07:17:35,8,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p008_pd_20261013_071637
+2026-10-13 07:17:36,8,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 08:15:57,8,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p008_20261013_071736.log
+2026-10-13 08:16:37,9,CTL STOP,0,WARN: CTL not running
+2026-10-13 08:17:35,9,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p009_pd_20261013_081637
+2026-10-13 08:17:36,9,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 09:15:57,9,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p009_20261013_081736.log
+2026-10-13 09:16:37,10,CTL STOP,0,WARN: CTL not running
+2026-10-13 09:17:35,10,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p010_pd_20261013_091637
+2026-10-13 09:17:36,10,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 10:15:57,10,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p010_20261013_091736.log
+2026-10-13 10:16:37,11,CTL STOP,0,WARN: CTL not running
+2026-10-13 10:17:35,11,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p011_pd_20261013_101637
+2026-10-13 10:17:36,11,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 11:15:57,11,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p011_20261013_101736.log
+2026-10-13 11:16:37,12,CTL STOP,0,WARN: CTL not running
+2026-10-13 11:17:35,12,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p012_pd_20261013_111637
+2026-10-13 11:17:36,12,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 12:15:57,12,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p012_20261013_111736.log
+2026-10-13 12:16:37,13,CTL STOP,0,WARN: CTL not running
+2026-10-13 12:17:35,13,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p013_pd_20261013_121637
+2026-10-13 12:17:36,13,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 13:15:57,13,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p013_20261013_121736.log
+2026-10-13 13:16:37,14,CTL STOP,0,WARN: CTL not running
+2026-10-13 13:17:35,14,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p014_pd_20261013_131637
+2026-10-13 13:17:36,14,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 14:15:57,14,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p014_20261013_131736.log
+2026-10-13 14:16:37,15,CTL STOP,0,WARN: CTL not running
+2026-10-13 14:17:35,15,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p015_pd_20261013_141637
+2026-10-13 14:17:36,15,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 16:16:48,16,missed,,the run was stopped
+2026-10-13 16:16:59,17,CTL STOP,0,WARN: CTL not running
+2026-10-13 16:17:58,17,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p017_pd_20261013_161700
+2026-10-13 16:17:59,17,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 17:15:57,17,controller 3473 s,0,tools/data/ctl_m3_real_unitB_p017_20261013_161759.log
+2026-10-13 17:16:37,18,CTL STOP,0,WARN: CTL not running
+2026-10-13 17:17:35,18,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p018_pd_20261013_171637
+2026-10-13 17:17:36,18,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 18:15:56,18,controller 3495 s,0,tools/data/ctl_m3_real_unitB_p018_20261013_171736.log
+2026-10-13 18:16:37,19,CTL STOP,0,WARN: CTL not running
+2026-10-13 18:17:35,19,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p019_pd_20261013_181637
+2026-10-13 18:17:36,19,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 19:15:56,19,controller 3495 s,0,tools/data/ctl_m3_real_unitB_p019_20261013_181736.log
+2026-10-13 19:16:37,20,CTL STOP,0,WARN: CTL not running
+2026-10-13 19:17:35,20,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p020_pd_20261013_191637
+2026-10-13 19:17:36,20,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 19:23:52,20,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p020_20261013_191736.log
+2026-10-13 20:16:37,21,CTL STOP,0,WARN: CTL not running
+2026-10-13 20:17:35,21,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p021_pd_20261013_201637
+2026-10-13 20:17:36,21,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 20:17:41,21,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p021_20261013_201736.log
+2026-10-13 21:16:37,22,CTL STOP,0,WARN: CTL not running
+2026-10-13 21:17:35,22,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p022_pd_20261013_211637
+2026-10-13 21:17:36,22,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 21:17:41,22,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p022_20261013_211736.log
+2026-10-13 22:16:37,23,CTL STOP,0,WARN: CTL not running
+2026-10-13 22:17:34,23,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p023_pd_20261013_221637
+2026-10-13 22:17:36,23,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-13 22:17:41,23,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p023_20261013_221736.log
+2026-10-13 23:16:37,24,CTL STOP,0,WARN: CTL not running
+2026-10-13 23:17:34,24,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p024_pd_20261013_231637
+2026-10-13 23:23:16,24,bursts rail_off n=30,0,tools/data/r1_burst_repeatability_m3_real_unitB_p024_rail_off_20261013_231735
+2026-10-13 23:24:14,24,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p024_pd_20261013_232317
+2026-10-13 23:24:15,24,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 00:15:56,24,controller 3096 s,0,tools/data/ctl_m3_real_unitB_p024_20261013_232415.log
+2026-10-14 00:16:37,25,CTL STOP,0,WARN: CTL not running
+2026-10-14 00:17:35,25,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p025_pd_20261014_001637
+2026-10-14 00:17:36,25,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 01:15:57,25,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p025_20261014_001736.log
+2026-10-14 01:16:37,26,CTL STOP,0,WARN: CTL not running
+2026-10-14 01:17:35,26,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p026_pd_20261014_011637
+2026-10-14 01:17:36,26,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 02:15:57,26,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p026_20261014_011736.log
+2026-10-14 02:16:37,27,CTL STOP,0,WARN: CTL not running
+2026-10-14 02:17:35,27,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p027_pd_20261014_021637
+2026-10-14 02:17:36,27,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 03:15:57,27,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p027_20261014_021736.log
+2026-10-14 03:16:37,28,CTL STOP,0,WARN: CTL not running
+2026-10-14 03:17:35,28,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p028_pd_20261014_031637
+2026-10-14 03:17:36,28,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 04:15:57,28,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p028_20261014_031736.log
+2026-10-14 04:16:37,29,CTL STOP,0,WARN: CTL not running
+2026-10-14 04:17:35,29,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p029_pd_20261014_041637
+2026-10-14 04:17:36,29,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 05:15:57,29,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p029_20261014_041736.log
+2026-10-14 05:16:37,30,CTL STOP,0,WARN: CTL not running
+2026-10-14 05:17:35,30,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p030_pd_20261014_051637
+2026-10-14 05:17:36,30,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 06:15:57,30,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p030_20261014_051736.log
+2026-10-14 06:16:37,31,CTL STOP,0,WARN: CTL not running
+2026-10-14 06:17:35,31,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p031_pd_20261014_061637
+2026-10-14 06:17:36,31,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 07:15:57,31,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p031_20261014_061736.log
+2026-10-14 07:16:37,32,CTL STOP,0,WARN: CTL not running
+2026-10-14 07:17:35,32,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p032_pd_20261014_071637
+2026-10-14 07:17:36,32,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 08:15:57,32,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p032_20261014_071736.log
+2026-10-14 08:16:37,33,CTL STOP,0,WARN: CTL not running
+2026-10-14 08:17:35,33,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p033_pd_20261014_081637
+2026-10-14 08:17:36,33,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 09:15:57,33,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p033_20261014_081736.log
+2026-10-14 09:16:37,34,CTL STOP,0,WARN: CTL not running
+2026-10-14 09:17:35,34,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p034_pd_20261014_091637
+2026-10-14 09:17:36,34,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 10:15:57,34,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p034_20261014_091736.log
+2026-10-14 10:16:37,35,CTL STOP,0,WARN: CTL not running
+2026-10-14 10:17:35,35,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p035_pd_20261014_101637
+2026-10-14 10:17:36,35,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 11:15:57,35,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p035_20261014_101736.log
+2026-10-14 11:16:37,36,CTL STOP,0,WARN: CTL not running
+2026-10-14 11:17:35,36,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p036_pd_20261014_111637
+2026-10-14 11:17:36,36,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 12:15:57,36,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p036_20261014_111736.log
+2026-10-14 12:16:37,37,CTL STOP,0,WARN: CTL not running
+2026-10-14 12:17:35,37,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p037_pd_20261014_121637
+2026-10-14 12:17:36,37,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 13:15:57,37,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p037_20261014_121736.log
+2026-10-14 13:16:37,38,CTL STOP,0,WARN: CTL not running
+2026-10-14 13:17:35,38,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p038_pd_20261014_131637
+2026-10-14 13:17:36,38,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 14:15:57,38,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p038_20261014_131736.log
+2026-10-14 14:16:37,39,CTL STOP,0,WARN: CTL not running
+2026-10-14 14:17:35,39,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p039_pd_20261014_141637
+2026-10-14 14:17:36,39,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 15:15:57,39,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p039_20261014_141736.log
+2026-10-14 15:16:37,40,CTL STOP,0,WARN: CTL not running
+2026-10-14 15:17:35,40,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p040_pd_20261014_151637
+2026-10-14 15:17:36,40,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 15:58:09,40,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p040_20261014_151736.log
+2026-10-14 16:16:37,41,CTL STOP,0,WARN: CTL not running
+2026-10-14 16:17:33,41,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p041_pd_20261014_161637
+2026-10-14 16:17:34,41,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 16:17:39,41,controller 3498 s,0,tools/data/ctl_m3_real_unitB_p041_20261014_161734.log
+2026-10-14 17:16:37,42,CTL STOP,0,WARN: CTL not running
+2026-10-14 17:17:35,42,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p042_pd_20261014_171637
+2026-10-14 17:17:36,42,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 18:15:57,42,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p042_20261014_171736.log
+2026-10-14 18:16:37,43,CTL STOP,0,WARN: CTL not running
+2026-10-14 18:17:35,43,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p043_pd_20261014_181637
+2026-10-14 18:17:36,43,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 19:15:57,43,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p043_20261014_181736.log
+2026-10-14 19:16:37,44,CTL STOP,0,WARN: CTL not running
+2026-10-14 19:17:35,44,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p044_pd_20261014_191637
+2026-10-14 19:17:36,44,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 20:15:57,44,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p044_20261014_191736.log
+2026-10-14 20:16:37,45,CTL STOP,0,WARN: CTL not running
+2026-10-14 20:17:35,45,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p045_pd_20261014_201637
+2026-10-14 20:17:36,45,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 21:15:57,45,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p045_20261014_201736.log
+2026-10-14 21:16:37,46,CTL STOP,0,WARN: CTL not running
+2026-10-14 21:17:35,46,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p046_pd_20261014_211637
+2026-10-14 21:17:36,46,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 22:15:57,46,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p046_20261014_211736.log
+2026-10-14 22:16:37,47,CTL STOP,0,WARN: CTL not running
+2026-10-14 22:17:35,47,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p047_pd_20261014_221637
+2026-10-14 22:17:36,47,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-14 23:15:57,47,controller 3496 s,0,tools/data/ctl_m3_real_unitB_p047_20261014_221736.log
+2026-10-14 23:16:37,48,CTL STOP,0,WARN: CTL not running
+2026-10-14 23:17:35,48,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p048_pd_20261014_231637
+2026-10-14 23:23:17,48,bursts rail_off n=30,0,tools/data/r1_burst_repeatability_m3_real_unitB_p048_rail_off_20261014_231735
+2026-10-14 23:24:15,48,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p048_pd_20261014_232318
+2026-10-14 23:24:16,48,CTL RODELAY 2100,0,ACK: CTL RODELAY 2100 us (persistent; applies at next START)
+2026-10-15 00:15:57,48,controller 3095 s,0,tools/data/ctl_m3_real_unitB_p048_20261014_232416.log
+2026-10-15 00:16:37,49,CTL STOP,0,WARN: CTL not running
+2026-10-15 00:17:35,49,bursts pd n=5,0,tools/data/r1_burst_repeatability_m3_real_unitB_p049_pd_20261015_001637
+2026-10-15 00:17:36,49,PWR OFF,0,ACK: PWR OFF
+2026-10-15 01:16:35,50,resting,0,
+2026-10-15 02:16:35,51,resting,0,
+2026-10-15 03:16:35,52,resting,0,
+2026-10-15 04:16:35,53,resting,0,
+2026-10-15 05:16:35,54,resting,0,

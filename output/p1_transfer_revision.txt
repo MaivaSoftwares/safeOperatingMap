@@ -1,0 +1,25 @@
+parity of classify_under_guard with the firmware C at the own guards: 0 mismatches
+budget left to the transient 0.64 mg; guards (ms): A pd 13.21, A rail_off 15.29, B pd 11.06, B rail_off 13.22
+
+B's transient at A's guard, per mode (transient alone; with b_s; budget 0.85 margined)
+  pd       A's guard 13.21 ms: transient 0.122 mg; + b_s 0.332 mg; margin to 0.64 mg x5.3
+  rail_off A's guard 15.29 ms: transient 0.084 mg; + b_s 0.294 mg; margin to 0.64 mg x7.7
+
+transfer on a 800-point grid per mode (A's map; B under A's guard)
+  pd       A-GREEN 500: B under A RED 0, YELLOW 12 (2.4 %); B-own GREEN 494; B GREEN under A 488
+           degraded cells span T_sleep 3.39 to 3.83 ms
+  rail_off A-GREEN 440: B under A RED 0, YELLOW 12 (2.7 %); B-own GREEN 431; B GREEN under A 428
+           degraded cells span T_sleep 6.56 to 7.41 ms
+
+unit B: own guards and under A's guards
+  own      pd       guard 11.06 ms: break-even 1.60 ms; largest bandwidth with a saving 28.3 Hz; saving at 0.5/5/20 Hz 96.3 / 80.8 / 28.8 %
+  own      rail_off guard 13.22 ms: break-even 4.70 ms; largest bandwidth with a saving 21.8 Hz; saving at 0.5/5/20 Hz 97.7 / 77.1 / 8.3 %
+  under A  pd       guard 13.21 ms: break-even 1.60 ms; largest bandwidth with a saving 25.2 Hz; saving at 0.5/5/20 Hz 96.1 / 78.6 / 20.3 %
+  under A  rail_off guard 15.29 ms: break-even 4.70 ms; largest bandwidth with a saving 20.0 Hz; saving at 0.5/5/20 Hz 97.5 / 75.0 / 0.0 %
+  crossover unit A (own guards, firmware p_avg): 493 ms
+  crossover unit B (own guards, firmware p_avg): 271 ms
+  crossover unit B under A's guards: 266 ms
+
+ratios B/A: E_inrush pd 1.349, rail_off 1.242; P_sleep pd 2.01; b0 pd 0.33; |kappa_b| 0.913
+  thermal collapse swing unit A: (1-delta) eps / |kappa| = 11.26 C (as tested, b_s = 0); with b_s 8.48 C
+  thermal collapse swing unit B: (1-delta) eps / |kappa| = 12.34 C (as tested, b_s = 0); with b_s 9.29 C

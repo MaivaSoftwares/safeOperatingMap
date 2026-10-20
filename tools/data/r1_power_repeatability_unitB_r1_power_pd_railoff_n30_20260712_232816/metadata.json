@@ -1,0 +1,18 @@
+{
+  "label": "unitB_r1_power_pd_railoff_n30",
+  "unit": "B",
+  "started_at": "20260712_232816",
+  "port": "/dev/ttyACM0",
+  "baud": 115200,
+  "modes": [
+    "pd",
+    "rail_off"
+  ],
+  "runs": 30,
+  "baseline_s": 3.0,
+  "hold_s": 5.0,
+  "warmup_s": 1.0,
+  "gap_s": 2.0,
+  "notes": "",
+  "limits": "INA219 steady-power only; rail_off sleep may be at/below INA219 low-current floor; E_inrush not measured here."
+}

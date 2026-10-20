@@ -1,0 +1,59 @@
+{
+  "sweep": "tools/data/unitA_b2_guard_sweep_20260709_082651",
+  "pedestal_mg": 5.0568,
+  "eps_allowed_mg": 1.0,
+  "points": [
+    {
+      "point_us": 12400,
+      "n": 100,
+      "t0_ms": 13.960280000000001,
+      "t1_ms": 18.803849999999997,
+      "transient_mean_mg": 1.7763568394002505e-17,
+      "transient_sem_mg": 0.13764783641120867,
+      "transient_std_mg": 1.3764783641120868,
+      "pred_median_mg": -0.112332377864554,
+      "pred_p2_5_mg": -0.13328208120467086,
+      "pred_p97_5_mg": -0.08925910149862763,
+      "saturated": false
+    },
+    {
+      "point_us": 8000,
+      "n": 100,
+      "t0_ms": 8.15855,
+      "t1_ms": 13.00118,
+      "transient_mean_mg": -3.9998,
+      "transient_sem_mg": 0.16256638115806193,
+      "transient_std_mg": 1.6256638115806195,
+      "pred_median_mg": -6.070301086742882,
+      "pred_p2_5_mg": -6.524569848901595,
+      "pred_p97_5_mg": -5.59597824675424,
+      "saturated": false
+    },
+    {
+      "point_us": 4000,
+      "n": 100,
+      "t0_ms": 4.0855500000000005,
+      "t1_ms": 8.91915,
+      "transient_mean_mg": -55.349799999999995,
+      "transient_sem_mg": 0.2283256357915071,
+      "transient_std_mg": 2.283256357915071,
+      "pred_median_mg": -37.08150156488808,
+      "pred_p2_5_mg": -38.03060325581834,
+      "pred_p97_5_mg": -35.5292119555686,
+      "saturated": false
+    },
+    {
+      "point_us": 2000,
+      "n": 100,
+      "t0_ms": 2.0533699999999997,
+      "t1_ms": 8.48736,
+      "transient_mean_mg": -12.851799999999907,
+      "transient_sem_mg": 259.1238164490895,
+      "transient_std_mg": 2591.2381644908946,
+      "pred_median_mg": -41.2952423511775,
+      "pred_p2_5_mg": -42.28402938250079,
+      "pred_p97_5_mg": -39.62444923721528,
+      "saturated": true
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+
+=== unit A: r1_burst_repeatability_unitA_r1_burst_pd_n30_reprocessed_20260706_203023
+bursts 30; samples/burst 1985; span 814 ms; noise floor (2nd half std) 1.59 mg
+M1 medians: b0 82.7 mg, tau 1.449 ms
+model  rms/noise     dAIC     dBIC  best AIC  best BIC    guard ms (median, min..max)
+M1         0.992      0.0      0.0        13        29        12.80 (12.51..13.00)
+M2         0.992      1.0     12.2        12         1        13.79 (12.31..17.89)
+M3         0.992      1.5      7.1         5         0        12.90 (12.15..13.64)
+M2 slow term: |b2| median 0.57 mg, tau2 median 151.5 ms (IQR 22.0..892.0)
+M3 beta: median 0.988 (IQR 0.968..1.017)
+-- ensemble mean of 30 bursts (grid jitter <= 0 us); noise floor 0.297 mg; first valid 6.17 ms
+M1    rms/noise 1.006  dAIC      0.0  dBIC      0.0  guard 12.79 ms  max |res| in first 20 ms 0.77 mg  params [ 0.00268 -0.08257  0.00145]
+M2    rms/noise 0.991  dAIC    -54.4  dBIC    -43.2  guard 13.13 ms  max |res| in first 20 ms 0.64 mg  params [ 2.73428e-03 -8.25076e-02  1.43691e-03 -2.03466e-04  2.29095e-01]
+M3    rms/noise 1.006  dAIC      0.5  dBIC      6.1  guard 12.86 ms  max |res| in first 20 ms 0.77 mg  params [ 0.00268 -0.08276  0.00144  0.99113]
+-- model-free: ensemble-mean deviation from settled, after the M1 guard (12.79 ms)
+   guard+0..5 ms: n=  12  mean -0.418 mg (se 0.091); budget 0.85 mg
+   guard+5..20 ms: n=  36  mean -0.100 mg (se 0.051); budget 0.85 mg
+   guard+20..100 ms: n= 195  mean -0.152 mg (se 0.020); budget 0.85 mg
+-- unit A bootstrap over bursts (300 resamples), median [95 % interval]
+   M2 slow amplitude |b2| 0.21 [0.16, 0.30] mg; tau2 224.65 [136.83, 1007.16] ms
+   guard M1 12.79 [12.75, 12.84] ms; guard M2 13.15 [13.04, 13.39] ms
+   M2 residual bias at the M1 guard 1.03 [0.98, 1.13] mg (budget 0.85, tolerance 1.00)
+   dAIC(M2 - M1) -27.25 [-43.91, -11.94]; M2 preferred in 100 %
+
+=== unit B: r1_burst_repeatability_unitB_r1_burst_pd_n30_20260712_232025
+bursts 30; samples/burst 1985; span 817 ms; noise floor (2nd half std) 1.70 mg
+M1 medians: b0 27.1 mg, tau 1.297 ms
+model  rms/noise     dAIC     dBIC  best AIC  best BIC    guard ms (median, min..max)
+M1         1.006      0.0      0.0        17        30        10.66 (10.04..11.56)
+M2         1.004      1.7     12.9         8         0        11.01 (9.47..16.92)
+M3         1.005      1.5      7.1         5         0        10.62 (9.29..12.79)
+M2 slow term: |b2| median 0.84 mg, tau2 median 15.1 ms (IQR 3.6..132.4)
+M3 beta: median 1.046 (IQR 0.928..1.141)
+-- ensemble mean of 30 bursts (grid jitter <= 1 us); noise floor 0.307 mg; first valid 6.20 ms
+M1    rms/noise 1.027  dAIC      0.0  dBIC      0.0  guard 10.64 ms  max |res| in first 20 ms 0.76 mg  params [ 0.00395 -0.0269   0.00129]
+M2    rms/noise 1.025  dAIC     -4.6  dBIC      6.5  guard 10.84 ms  max |res| in first 20 ms 0.85 mg  params [ 0.00395 -0.02676  0.00126 -0.00023  0.02222]
+M3    rms/noise 1.026  dAIC     -0.2  dBIC      5.4  guard 10.50 ms  max |res| in first 20 ms 0.76 mg  params [ 0.00395 -0.02668  0.00131  1.03815]
+-- model-free: ensemble-mean deviation from settled, after the M1 guard (10.64 ms)
+   guard+0..5 ms: n=  12  mean -0.380 mg (se 0.085); budget 0.85 mg
+   guard+5..20 ms: n=  37  mean -0.118 mg (se 0.053); budget 0.85 mg
+   guard+20..100 ms: n= 194  mean -0.020 mg (se 0.024); budget 0.85 mg
+-- unit B bootstrap over bursts (300 resamples), median [95 % interval]
+   M2 slow amplitude |b2| 0.23 [0.07, 1.51] mg; tau2 23.27 [4.80, 2000.00] ms
+   guard M1 10.64 [10.51, 10.79] ms; guard M2 10.85 [10.59, 11.23] ms
+   M2 residual bias at the M1 guard 0.97 [0.88, 1.12] mg (budget 0.85, tolerance 1.00)
+   dAIC(M2 - M1) -0.84 [-8.99, 2.46]; M2 preferred in 66 %
