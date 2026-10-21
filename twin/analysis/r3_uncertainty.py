@@ -179,21 +179,22 @@ def scalar_draws(pools: dict, n: int = N_SCALAR, seed: int = SEED) -> pd.DataFra
     return pd.DataFrame(rows)
 
 
-def pgreen_grid(pools: dict, n: int = N_GRID, seed: int = SEED) -> pd.DataFrame:
-    """P(class | T_sleep) per mode over TS_GRID, via the firmware classifier."""
+def pgreen_grid(pools: dict, n: int = N_GRID, seed: int = SEED, grid: np.ndarray = TS_GRID) -> pd.DataFrame:
+    """P(class | T_sleep) per mode over `grid` (default TS_GRID), via the firmware classifier.
+    The draws depend on the seed and the pools only, so another grid sees the same draws."""
     rng = np.random.default_rng(seed + 1)
     idx = draw_indices(rng, pools, n)
     t = core.tol(**TOL)
-    counts = {m: np.zeros((3, len(TS_GRID)), dtype=np.int64) for m in MODES}
+    counts = {m: np.zeros((3, len(grid)), dtype=np.int64) for m in MODES}
     code = {"RED": 0, "YELLOW": 1, "GREEN": 2}
     for i in range(n):
         for mode in MODES:
             s = sensor_for(pools, idx, i, mode)
-            for j, ts in enumerate(TS_GRID):
+            for j, ts in enumerate(grid):
                 counts[mode][code[core.classify(s, t, float(ts))], j] += 1
     rows = []
     for mode in MODES:
-        for j, ts in enumerate(TS_GRID):
+        for j, ts in enumerate(grid):
             rows.append({"method": mode, "T_sleep_s": float(ts),
                          "p_red": counts[mode][0, j] / n,
                          "p_yellow": counts[mode][1, j] / n,

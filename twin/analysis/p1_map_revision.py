@@ -16,7 +16,11 @@ monitoring bandwidth at which a method still saves energy, 1 / (2 (T_be + T_guar
 The `B_mon^max` rows of `numbers` are 1 / (2 (T_guard + T_probe)), where the sleep is zero and
 the saving is negative (the surge is still paid); they are kept as computed.
 
-Run: twin/.venv/bin/python twin/analysis/p1_map_revision.py [--check | --bandwidth]
+`--beyond-2s` (2026-10-22) classifies the same draws on 19 more points of the map's log grid, from
+2 s to 3 s, where the map figure's axis ends so that the crossover band fits; the first point,
+2 s, repeats the last point of `pgreen.csv` and must match it.
+
+Run: twin/.venv/bin/python twin/analysis/p1_map_revision.py [--check | --bandwidth | --beyond-2s]
 """
 from __future__ import annotations
 
@@ -126,7 +130,30 @@ def saving_bandwidth(draws: pd.DataFrame) -> pd.DataFrame:
     return pd.DataFrame(rows, columns=["quantity", "median [2.5 %, 97.5 %]"])
 
 
+TS_BEYOND = r3.TS_GRID[-1] * (r3.TS_GRID[1] / r3.TS_GRID[0]) ** np.arange(0, 20)   # 2.0 to 3.04 s
+
+
+def beyond_2s() -> pd.DataFrame:
+    """Classes of the map's draws from 2 s to 3 s, on the continuation of r3.TS_GRID."""
+    r3.sensor_for = sensor_for
+    pg = r3.pgreen_grid(pools_for(False), grid=TS_BEYOND)
+    ref = pd.read_csv(OUTDIR / "pgreen.csv")
+    cols = ["p_red", "p_yellow", "p_green"]
+    for m in r3.MODES:                                  # the overlap point reproduces pgreen.csv
+        a = pg[pg.method == m][cols].to_numpy()[0]
+        b = ref[ref.method == m][cols].to_numpy()[-1]
+        if not np.array_equal(a, b):
+            raise SystemExit(f"beyond-2s: the 2 s point differs from pgreen.csv ({m}: {a} vs {b})")
+    pg = pg[pg.T_sleep_s > r3.TS_GRID[-1] * (1 + 1e-9)].reset_index(drop=True)
+    pg.to_csv(OUTDIR / "pgreen_beyond_2s.csv", index=False)
+    print(pg.groupby("method")[cols].agg(["min", "max"]).to_string())
+    print(f"-> {(OUTDIR / 'pgreen_beyond_2s.csv').relative_to(r3.REPO)}")
+    return pg
+
+
 def main() -> pd.DataFrame:
+    if "--beyond-2s" in sys.argv:
+        return beyond_2s()
     if "--bandwidth" in sys.argv:
         t = saving_bandwidth(pd.read_csv(OUTDIR / "draws.csv"))
         print(t.to_string(index=False))

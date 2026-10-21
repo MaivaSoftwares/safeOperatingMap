@@ -19,7 +19,7 @@ inrush                 twin/analysis/figures.py            (_load_inrush, _INRUS
 recovery_raw           twin/analysis/r2fig_transients.py   (constants; its burst loop)
 recovery_terms         twin/analysis/p1_recovery_models.py (load_bursts, ensemble, fit M2)
 hyst_campaign          twin/analysis/hyst_campaign_figure.py (_dedrift_legs, _binned)
-safemap_banded         tools/data/r3_map_uncertainty_unitA_c1/{pgreen,draws}.csv with
+safemap_banded         tools/data/r3_map_uncertainty_unitA_rev/{pgreen,pgreen_beyond_2s,draws}.csv with
                        twin/analysis/r3_uncertainty.py (band, robust_green, _runs).
                        This is correction C-1: rail_off at its own guard, so the lower
                        panel has one guard row per sleep method.
@@ -309,14 +309,23 @@ def fig_safemap_banded() -> dict:
     for m in R.MODES:                                   # the file's grid is the generator's grid
         if not np.allclose(pg[pg.method == m].T_sleep_s.to_numpy(), R.TS_GRID, rtol=1e-12, atol=0):
             raise SystemExit("pgreen.csv is not on r3_uncertainty.TS_GRID")
+    # the same draws from 2 s to 3 s (p1_map_revision.py --beyond-2s), on the continuation of the
+    # grid, so the class strip reaches the end of the axis that the crossover band needs
+    ext = pd.read_csv(src / "pgreen_beyond_2s.csv")
+    ts_ext = R.TS_GRID[-1] * (R.TS_GRID[1] / R.TS_GRID[0]) ** np.arange(1, 20)
+    for m in R.MODES:
+        if not np.allclose(ext[ext.method == m].T_sleep_s.to_numpy(), ts_ext, rtol=1e-12, atol=0):
+            raise SystemExit("pgreen_beyond_2s.csv is not on the continuation of TS_GRID")
+    ts_all = np.r_[R.TS_GRID, ts_ext]
     C = R.COLOR
     fig, (ax, axb) = _new(2.60, nrows=2, sharex=True, gridspec_kw={"height_ratios": [0.78, 1.0]})
 
     # -- top: modal class per point, hatched where the class is not settled at 1-alpha ---------
     cmap = ListedColormap([C["RED"], C["YELLOW"], C["GREEN"]])
-    grid = np.array([pg[pg.method == m][["p_red", "p_yellow", "p_green"]].to_numpy().argmax(axis=1)
+    grid = np.array([np.r_[pg[pg.method == m][["p_red", "p_yellow", "p_green"]].to_numpy().argmax(axis=1),
+                           ext[ext.method == m][["p_red", "p_yellow", "p_green"]].to_numpy().argmax(axis=1)]
                      for m in R.MODES])
-    ax.pcolormesh(R.TS_GRID * 1e3, [0.5, 1.5], grid, cmap=cmap, vmin=0, vmax=2, shading="nearest",
+    ax.pcolormesh(ts_all * 1e3, [0.5, 1.5], grid, cmap=cmap, vmin=0, vmax=2, shading="nearest",
                   edgecolors="face", linewidth=0.3, antialiased=False)
     ax.axhline(1.0, color="white", lw=3)
     ax.set_xscale("log")
@@ -369,8 +378,8 @@ def fig_safemap_banded() -> dict:
     axb.set_ylim(-0.6, len(items) - 0.4)
     axb.set_xscale("log")
     _plain_log(axb.xaxis)
-    # the map grid is 0.3 ms to 2 s; the corrected crossover band ends later, so the axis does too
-    # (the strip of the top panel beyond 2 s stays empty: no class was computed there)
+    # the map grid is 0.3 ms to 2 s; the corrected crossover band ends later, so the axis runs to
+    # 3 s, and the top panel's classes beyond 2 s come from pgreen_beyond_2s.csv
     x_hi = R.TS_GRID[-1] * 1e3
     if hi_ms > x_hi:
         x_hi = 3000.0
@@ -378,7 +387,7 @@ def fig_safemap_banded() -> dict:
             raise SystemExit(f"safemap_banded: a band ends at {hi_ms:.0f} ms, beyond the axis")
     axb.set_xlim(R.TS_GRID[0] * 1e3, x_hi)
     axb.set_xlabel(r"$T_{\mathrm{sleep}}$ (ms, log)")
-    return _finish(fig, "safemap_banded", f"{src.relative_to(REPO)} (C-1, D6, C-7)")
+    return _finish(fig, "safemap_banded", f"{src.relative_to(REPO)} (C-1, D6, C-7; classes to 3 s)")
 
 
 def fig_b2_guard_violation() -> dict:

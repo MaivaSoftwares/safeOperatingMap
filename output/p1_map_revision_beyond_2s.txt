@@ -1,0 +1,6 @@
+         p_red      p_yellow      p_green     
+           min  max      min  max     min  max
+method                                        
+pd         1.0  1.0      0.0  0.0     0.0  0.0
+rail_off   1.0  1.0      0.0  0.0     0.0  0.0
+-> tools/data/r3_map_uncertainty_unitA_rev/pgreen_beyond_2s.csv

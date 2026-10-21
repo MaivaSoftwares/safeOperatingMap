@@ -52,7 +52,7 @@ Run every command from the bundle's root with the virtual environment's Python (
 | Fig. 3 (wake-current surge; recovery terms) | `paper/figures/make_revision_figures.py inrush recovery_terms` | `pd_scope/`, `rail_off_scope/`, the 30-burst calibration set |
 | Section III-B (one or two recovery terms) | `twin/analysis/p1_recovery_models.py` | the 30-burst calibration sets |
 | Fig. 4; Section VIII (hysteresis, r_max, guards that carry the loop) | `paper/figures/make_revision_figures.py hyst_campaign`; `cd twin && ../.venv/bin/python analysis/p1_ramp_guard.py` | `twin/data/temp_log_*_hyst_*.csv` |
-| Table V, Fig. 5 (the map and its bands); bandwidth with a saving | `twin/analysis/p1_map_revision.py`, then `--bandwidth`; `paper/figures/make_revision_figures.py safemap_banded` | the Table II runs; writes `tools/data/r3_map_uncertainty_unitA_rev/` |
+| Table V, Fig. 5 (the map and its bands); bandwidth with a saving | `twin/analysis/p1_map_revision.py`, then `--bandwidth` and `--beyond-2s` (the classes from 2 s to 3 s, where the figure's axis ends); `paper/figures/make_revision_figures.py safemap_banded` | the Table II runs; writes `tools/data/r3_map_uncertainty_unitA_rev/` |
 | Fig. 6 (truncated guards) | `paper/figures/make_revision_figures.py b2_guard_violation` | `unitA_b2_guard_sweep_20260709_082651/` |
 | Fig. 7 (thermal collapse) | `paper/figures/make_revision_figures.py thermal_paper` | `ctl_thermal_*.log` (four ramps per unit and the two-ramp control) |
 | Fig. 8; Section V-E (real drift) | `twin/analysis/p1_m3_audit.py tools/data/m3_real_unitA_20261016_024528 --delays` (and `..._unitB_20261012_231635`); `paper/figures/make_revision_figures.py m3_drift` | `m3_real_unit*/`, `ctl_m3_real_*`, `r1_burst_repeatability_m3_real_*` |
