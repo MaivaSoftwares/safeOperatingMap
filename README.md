@@ -61,6 +61,7 @@ Run every command from the bundle's root with the virtual environment's Python (
 | Fig. 9 (transfer) | `paper/figures/make_revision_figures.py transfer_paper` | the coefficient sets of Table II |
 | Table IV (uncertainty budget of the guard, printed first; the budget as submitted after it); Section III-F (the node's clock against the host's) | `twin/analysis/p1_uncertainty_budget.py` | the calibration sets, the burst record, `m3_real_unit*/` |
 | Table VI, Section VI (rules for the first trusted reading) | `twin/analysis/p1_benchmark_revision.py`, with `--fine` (the slope rule's finer grid), `--moving` (the sensor moving) and `--residual` (the residual above the fitted transient by run amplitude) | the burst record |
+| Section VI (precision: reading scatter after the guard against the settled output; settled level wake to wake) | `twin/analysis/p1_precision.py` | the 30-burst calibration sets |
 | Section III-F (record checks: 4508 bursts, late first valid frames, the start-up rule) | `twin/analysis/p1_revision_checks.py` | the burst record |
 | The slow term b_s (Sections II-B, III-B) | `twin/analysis/p1_slow_term_october.py` | the burst record |
 

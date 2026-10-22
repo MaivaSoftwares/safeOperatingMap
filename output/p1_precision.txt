@@ -1,0 +1,8 @@
+unit A: 30 bursts; settled output (from 0.3 s): single-reading SD 1.591 mg (37590 readings)
+  guard to +5 ms   SD 1.536 mg (360 readings); ratio to settled 0.966 (equal-variance 95% band 0.927 to 1.073)
+  guard to +20 ms  SD 1.596 mg (1440 readings); ratio to settled 1.003 (equal-variance 95% band 0.963 to 1.037)
+  settled level from wake to wake: SD 0.067 mg
+unit B: 30 bursts; settled output (from 0.3 s): single-reading SD 1.709 mg (37680 readings)
+  guard to +5 ms   SD 1.850 mg (360 readings); ratio to settled 1.083 (equal-variance 95% band 0.927 to 1.073)
+  guard to +20 ms  SD 1.757 mg (1470 readings); ratio to settled 1.028 (equal-variance 95% band 0.963 to 1.037)
+  settled level from wake to wake: SD 0.061 mg
