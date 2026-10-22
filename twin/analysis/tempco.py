@@ -124,8 +124,11 @@ def bias_tc(t_s, accel_g, temp_c, warmup_s: float = 0.0, eps_mg: float = 1.0) ->
                   and np.sign(slope_up) == np.sign(slope_dn))
     leg_note = ("same sign confirms it" if legs_agree
                 else "OPPOSITE SIGNS — legs do not corroborate; treat bias-TC as unreliable here")
+    brackets = (np.isfinite(slope_up) and np.isfinite(slope_dn)
+                and min(slope_up, slope_dn) <= bias_tc_ug <= max(slope_up, slope_dn))
     print(f"  leg cross-check  : heating {slope_up:+.1f} | cooling {slope_dn:+.1f} µg/°C "
-          f"(univariate, drift-affected — they BRACKET the bias-TC, {leg_note})")
+          f"(univariate, drift-affected; they {'bracket' if brackets else 'do not bracket'} "
+          f"the bias-TC; {leg_note})")
     print(f"  C2: ΔT_crit (bias=ε={eps_mg:g} mg) = {dT_crit:.1f} °C  -> "
           f"{'C2 needs a temp term within normal swings' if dT_crit < 10 else 'C2 robust to ordinary ΔT'}")
     return {"bias_tc_ug_per_C": bias_tc_ug, "bias_tc_se_ug_per_C": se_ug, "r2": r2,

@@ -1,8 +1,8 @@
 REVISION: budget 0.64 mg (slow term 0.21 mg on both units); E_inrush at 1.00 ohm (mean of 10):
-  unit A pd       0.0770 mJ   r1_inrush_repeatability_unitA_r1_inrush_pd_n10_shunt1p00_20261017_022914
-  unit A rail_off 0.2499 mJ   r1_inrush_repeatability_unitA_r1_inrush_rail_off_n10_shunt1p00_20261017_022916
-  unit B pd       0.1039 mJ   r1_inrush_repeatability_unitB_r1_inrush_pd_n10_shunt1p00_20261017_022917
-  unit B rail_off 0.3104 mJ   r1_inrush_repeatability_unitB_r1_inrush_rail_off_n10_shunt1p00_20261017_022919
+  unit A pd       0.0711 mJ   r1_inrush_repeatability_unitA_r1_inrush_pd_n10_shunt1p00_20261023_011141
+  unit A rail_off 0.2456 mJ   r1_inrush_repeatability_unitA_r1_inrush_rail_off_n10_shunt1p00_20261023_011144
+  unit B pd       0.0779 mJ   r1_inrush_repeatability_unitB_r1_inrush_pd_n10_shunt1p00_20261023_011147
+  unit B rail_off 0.2890 mJ   r1_inrush_repeatability_unitB_r1_inrush_rail_off_n10_shunt1p00_20261023_011150
 
 === unit A: 3790 normal-grid pd bursts in 142 runs ===
 calibration (30 bursts): b0 82.7 mg, tau 1.452 ms, first valid 6.17 ms, guard 13.23 ms
@@ -60,16 +60,16 @@ B6 with a simulated input at the wake (threshold 1.76 mg/ms; wait and transient 
 energy, pd mode
                                                         method  guard_ms  e_guard_mj  b_max_hz  s_0.5    s_5    s_20
                                               B0 continuous-ON    0.0000      0.0000       NaN 0.0000 0.0000  0.0000
-                                                B1 first valid    6.1740      0.4019   40.4272 0.9780 0.8678  0.5004
-                      B2 fixed warm-up, about 1 s (Zauli 2026) 1000.0000     65.1000    0.4969    NaN    NaN     NaN
-                        B2 platform start-up, 0.92 s (Fu 2018)  920.0000     59.8920    0.5398 0.0731    NaN     NaN
-                    B2 platform start-up, 0.95 s (Sarwar 2020)  950.0000     61.8450    0.5229 0.0434    NaN     NaN
-                                        B3 compensation, +2 ms    8.1740      0.5321   34.7998 0.9761 0.8480  0.4212
-                                             B4 / B5 map guard   13.2330      0.8615   25.7375 0.9711 0.7979  0.2208
-             B6 slope rule, calibration-day setting, mean wait   13.8885      0.9041   24.8975 0.9704 0.7914  0.1948
-B6 slope rule, threshold = budget / tau, 12 samples, mean wait   17.8083      1.1593   20.8315 0.9665 0.7526  0.0395
-                                 first trust 16 ms (campaigns)   16.0000      1.0416   22.5287 0.9683 0.7705  0.1112
-                                                   fixed 20 ms   20.0000      1.3020   19.0884 0.9644 0.7309 -0.0473
+                                                B1 first valid    6.1740      0.4019   40.7284 0.9781 0.8687  0.5040
+                      B2 fixed warm-up, about 1 s (Zauli 2026) 1000.0000     65.1000    0.4970    NaN    NaN     NaN
+                        B2 platform start-up, 0.92 s (Fu 2018)  920.0000     59.8920    0.5399 0.0732    NaN     NaN
+                    B2 platform start-up, 0.95 s (Sarwar 2020)  950.0000     61.8450    0.5230 0.0435    NaN     NaN
+                                        B3 compensation, +2 ms    8.1740      0.5321   35.0227 0.9762 0.8489  0.4248
+                                             B4 / B5 map guard   13.2330      0.8615   25.8592 0.9711 0.7988  0.2244
+             B6 slope rule, calibration-day setting, mean wait   13.8885      0.9041   25.0113 0.9705 0.7923  0.1984
+B6 slope rule, threshold = budget / tau, 12 samples, mean wait   17.8083      1.1593   20.9111 0.9666 0.7535  0.0431
+                                 first trust 16 ms (campaigns)   16.0000      1.0416   22.6219 0.9684 0.7714  0.1148
+                                                   fixed 20 ms   20.0000      1.3020   19.1553 0.9644 0.7318 -0.0437
 
 === unit B: 661 normal-grid pd bursts in 72 runs ===
 calibration (30 bursts): b0 27.1 mg, tau 1.297 ms, first valid 6.20 ms, guard 11.05 ms
@@ -127,18 +127,18 @@ B6 with a simulated input at the wake (threshold 3.95 mg/ms; wait and transient 
 energy, pd mode
                                                         method  guard_ms  e_guard_mj  b_max_hz  s_0.5    s_5    s_20
                                               B0 continuous-ON    0.0000      0.0000       NaN 0.0000 0.0000  0.0000
-                                                B1 first valid    6.1950      0.4096   39.0707 0.9680 0.8551  0.4786
-                      B2 fixed warm-up, about 1 s (Zauli 2026) 1000.0000     66.1250    0.4967    NaN    NaN     NaN
-                        B2 platform start-up, 0.92 s (Fu 2018)  920.0000     60.8350    0.5396 0.0720    NaN     NaN
-                    B2 platform start-up, 0.95 s (Sarwar 2020)  950.0000     62.8188    0.5227 0.0426    NaN     NaN
-                                        B3 compensation, +2 ms    8.1950      0.5419   33.7899 0.9660 0.8355  0.4002
-                                             B4 / B5 map guard   11.0548      0.7310   28.3171 0.9632 0.8074  0.2880
-             B6 slope rule, calibration-day setting, mean wait   12.0200      0.7948   26.8494 0.9623 0.7980  0.2501
-B6 slope rule, threshold = budget / tau, 12 samples, mean wait   16.2401      1.0739   21.8891 0.9582 0.7566  0.0846
-                                 first trust 16 ms (campaigns)   16.0000      1.0580   22.1216 0.9584 0.7589  0.0940
-                                                   fixed 20 ms   20.0000      1.3225   18.7954 0.9545 0.7197 -0.0628
+                                                B1 first valid    6.1950      0.4096   40.3324 0.9684 0.8590  0.4943
+                      B2 fixed warm-up, about 1 s (Zauli 2026) 1000.0000     66.1250    0.4969    NaN    NaN     NaN
+                        B2 platform start-up, 0.92 s (Fu 2018)  920.0000     60.8350    0.5398 0.0724    NaN     NaN
+                    B2 platform start-up, 0.95 s (Sarwar 2020)  950.0000     62.8188    0.5229 0.0429    NaN     NaN
+                                        B3 compensation, +2 ms    8.1950      0.5419   34.7295 0.9664 0.8394  0.4159
+                                             B4 / B5 map guard   11.0548      0.7310   28.9741 0.9636 0.8113  0.3037
+             B6 slope rule, calibration-day setting, mean wait   12.0200      0.7948   27.4393 0.9627 0.8019  0.2658
+B6 slope rule, threshold = budget / tau, 12 samples, mean wait   16.2401      1.0739   22.2796 0.9585 0.7605  0.1003
+                                 first trust 16 ms (campaigns)   16.0000      1.0580   22.5205 0.9588 0.7628  0.1097
+                                                   fixed 20 ms   20.0000      1.3225   19.0825 0.9549 0.7236 -0.0471
 
 energy, pd mode, at the guards of Table II
 unit              method  guard_ms  e_guard_mj  b_max_hz  s_0.5    s_5   s_20
-   A map guard, Table II     13.22      0.8606   25.7547 0.9711 0.7980 0.2213
-   B map guard, Table II     11.05      0.7307   28.3249 0.9632 0.8075 0.2882
+   A map guard, Table II     13.22      0.8606   25.8766 0.9712 0.7989 0.2249
+   B map guard, Table II     11.05      0.7307   28.9822 0.9636 0.8114 0.3039

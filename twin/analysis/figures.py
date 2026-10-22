@@ -70,7 +70,8 @@ T_FV = 0.006174   # first trustworthy sample after the wake command (R1, pd)
 # C-7 (2026-10-17): the scope shunt is 1.00 ohm (meter 1.1 ohm minus 0.1 ohm leads; bands 10 x 10.0 ohm
 # +/-2 %). Energies, peaks and settled currents re-extracted at 1.00 ohm (r1_inrush_repeatability_*_shunt1p00_*).
 SCOPE_SHUNT_OHM = 1.00
-_INRUSH = {"rail_off": ("0.250 mJ", 81, 13.4), "pd": ("0.077 mJ", 51, 13.9)}
+# C-7b (2026-10-23): energies integrated to electrical settling T_wake (unit A means of 10).
+_INRUSH = {"rail_off": ("0.246 mJ", 81, 13.4), "pd": ("0.071 mJ", 51, 13.9)}
 
 
 def _load_inrush(mode):

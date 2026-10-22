@@ -30,7 +30,7 @@ thermal_paper          paper/figures/make_thermal_replication_fig.py and the
                        twin/analysis/p1_transfer_revision.py (UNIT_A) through libcore.so
 transfer_paper         twin/analysis/p1_transfer_revision.py (Section VII, revised sets)
 m3_drift               twin/analysis/p1_m3_audit.py        (audit: hours, segments, excluded)
-testbed_photo_annotated  NOT built: see fig_testbed_photo_annotated().
+testbed_photo_annotated  drawn in main.tex: see fig_testbed_photo_annotated().
 """
 from __future__ import annotations
 
@@ -186,9 +186,15 @@ def fig_inrush() -> dict:
     for m, (e, pk, _settled) in F._INRUSH.items():
         t, i_mA = F._load_inrush(m)
         ax.plot(t, i_mA, color=F.COLOR[m], lw=0.7, label=f"{m}: {e}, {pk} mA")
-    ax.set(xlabel="time from wake (ms)", ylabel="rail current (mA)", xlim=(-0.3, 2.5))
+        # the end of the surge integral, Eq. (11): median electrical settling of the 10 captures
+        run = sorted((REPO / "tools" / "data").glob(
+            f"r1_inrush_repeatability_unitA_r1_inrush_{m}_n10_shunt1p00_*"))[-1]
+        ax.axvline(float(pd.read_csv(run / "fits.csv").t_wake_ms.median()), color=F.COLOR[m],
+                   ls=":", lw=0.9)
+    ax.set(xlabel="time from wake (ms)", ylabel="rail current (mA)", xlim=(-0.3, 6.0))
     ax.legend(loc="upper right")
-    return _finish(fig, "inrush", "tools/data/{rail_off,pd}_scope capture 1")
+    return _finish(fig, "inrush", "tools/data/{rail_off,pd}_scope capture 1; T_wake from the newest "
+                   "shunt1p00 re-extraction")
 
 
 def fig_recovery_raw() -> dict:
@@ -259,6 +265,10 @@ def fig_recovery_terms() -> dict:
     ax.plot(1e3 * (tt + fv), 1e3 * (fast + slow), color="0.45", lw=0.9, label="sum")
     ax.axhline(0.85, color=MUTED, lw=0.8)
     ax.annotate(r"$(1-\delta)\varepsilon$", (840, 1.0), ha="right", va="bottom", color=MUTED)
+    # the level the guard brings the fast term to, (1 - delta) eps - b_s (F1, 2026-10-21: the caption
+    # names it, and the Section III review asked for both levels)
+    ax.axhline(0.85 - 0.21, color=MUTED, lw=0.8, ls=(0, (3, 2)))
+    ax.annotate(r"$(1-\delta)\varepsilon-b_s$", (840, 0.58), ha="right", va="top", color=MUTED)
     ax.axvline(guard_ms, color=MUTED, lw=0.8, ls=(0, (5, 1.5, 1, 1.5)))
     ax.annotate(f"guard\n{guard_ms:.1f} ms", (guard_ms * 1.05, 60), va="top", color=MUTED,
                 linespacing=LS)
@@ -599,12 +609,12 @@ def fig_transfer_paper() -> dict:
 
 
 def fig_testbed_photo_annotated() -> None:
-    """Not built. The repository holds no unlabelled original of this photograph: both
-    paper/figures/testbed_photo_annotated.jpg (text labels and arrows) and the JPEG inside
-    paper/figures/testbed_photo.pdf (numbered red boxes) have their annotation in the pixels.
-    Painting over either would be image manipulation, so the camera original is needed; with it,
-    the labels can be drawn here as vector text over the photo at its native resolution."""
-    print("  testbed_photo_annotated  NOT BUILT: no unlabelled original photograph in the repository")
+    """Not built here. Fig. 2 is a tikzpicture in main.tex: the camera original
+    paper/figures/testbed_photo_original.jpg (2026-10-23; the submitted
+    testbed_photo_annotated.jpg is this photograph with labels and arrows in its pixels), embedded
+    unchanged, with the labels as vector text at \\footnotesize (8 pt) in its pixel coordinates.
+    LaTeX passes the JPEG through as it is; matplotlib would re-encode it."""
+    print("  testbed_photo_annotated  drawn in main.tex (TikZ labels over testbed_photo_original.jpg)")
 
 
 # ================================================================================================

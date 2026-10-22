@@ -24,7 +24,11 @@ budget by the factor-of-two steps of the benchmark's grid.
 2026-10-21): the slope rule at its calibration-day setting with a simulated 50 mg, 20 Hz input,
 in the table's own terms, for the phase draw of slope_under_input (seed 0) and five more.
 
-Run: twin/.venv/bin/python twin/analysis/p1_benchmark_revision.py [--check | --fine | --moving]
+--residual gives Section VI's residual above each wake's fitted transient, 0 to 3 ms after the
+run's own map guard (the median need of its wakes), by run amplitude: on unit B 0.28 +/- 0.06 mg in
+the 13 runs with b0 above 70 mg (Section VI).
+
+Run: twin/.venv/bin/python twin/analysis/p1_benchmark_revision.py [--check | --fine | --moving | --residual]
 """
 from __future__ import annotations
 
@@ -109,12 +113,41 @@ def slope_moving(record: list, unit: str, freq_hz: float, amp_mg: float, seed: i
                 **{k: v for k, v in bm.energy_row(unit, "pd", wait).items() if k != "guard_ms"})
 
 
+def residual_by_amplitude(record: dict, unit: str, bands=((0, 40), (40, 70), (70, np.inf))) -> pd.DataFrame:
+    """Mean residual above each wake's fitted transient over the 3 ms after the run's map guard,
+    for runs of at least ten wakes, grouped by the run's median b0 (mg): mean and standard error
+    over the runs of each band."""
+    rows = []
+    for _, bs in bm.by_run(record, unit).items():
+        if len(bs) < bm.MIN_RUN_BURSTS:
+            continue
+        g = float(np.median([x.need() for x in bs]))
+        res = []
+        for b in bs:
+            sel = (b.t >= g - 1e-9) & (b.t < g + 3e-3)
+            res.append(float(np.mean(b.dev[sel] - b.fitted(b.t[sel]))))
+        rows.append(dict(b0=float(np.median([x.b0 for x in bs])), res=float(np.mean(res))))
+    rr = pd.DataFrame(rows)
+    out = []
+    for lo, hi in bands:
+        r = rr[(rr.b0 >= lo) & (rr.b0 < hi)].res
+        out.append(dict(unit=unit, b0_mg=f"{lo:g} to {hi:g}", runs=len(r), residual_mg=r.mean(),
+                        se_mg=r.std(ddof=1) / np.sqrt(len(r)) if len(r) > 1 else np.nan))
+    return pd.DataFrame(out)
+
+
 def main() -> None:
     if "--check" in sys.argv:
         print("CHECK: p1_benchmark as committed (budget 0.85 mg, July energies)")
         bm.report()
         return
     used = configure()
+    if "--residual" in sys.argv:
+        print(f"RESIDUAL above each wake's fitted transient, 0 to 3 ms after the run's map guard; "
+              f"budget {bm.BUDGET_MG:.2f} mg; runs of at least {bm.MIN_RUN_BURSTS} wakes")
+        record = bm.load_record("pd")
+        print(pd.concat([residual_by_amplitude(record, u) for u in ("A", "B")]).round(3).to_string(index=False))
+        return
     if "--moving" in sys.argv:
         bm.SLOPE_WINDOWS, bm.SLOPE_FACTORS = FINE_WINDOWS, FINE_FACTORS
         f, a = MOVING_INPUT

@@ -1,8 +1,8 @@
 text font: STIXGeneral.ttf; output: paper/figures/rev/
-  testbed_photo_annotated  NOT BUILT: no unlabelled original photograph in the repository
-  inrush               252.0 x 151.2 pt   min text 8.0 pt (15 text objects)   <- tools/data/{rail_off,pd}_scope capture 1
+  testbed_photo_annotated  drawn in main.tex (TikZ labels over testbed_photo_original.jpg)
+  inrush               252.0 x 151.2 pt   min text 8.0 pt (16 text objects)   <- tools/data/{rail_off,pd}_scope capture 1; T_wake from the newest shunt1p00 re-extraction
   recovery_raw         252.0 x 151.2 pt   min text 8.0 pt (14 text objects)   <- 30 raw bursts, r1_burst_repeatability_unitA_r1_burst_pd_n30_reprocessed_20260706_203023
-  recovery_terms       252.0 x 151.2 pt   min text 8.0 pt (14 text objects)   <- r1_burst_repeatability_unitA_r1_burst_pd_n30_reprocessed_20260706_203023: 30 bursts; slow 0.203 mg, 229 ms; 0 bins at or below zero not drawn
+  recovery_terms       252.0 x 151.2 pt   min text 8.0 pt (15 text objects)   <- r1_burst_repeatability_unitA_r1_burst_pd_n30_reprocessed_20260706_203023: 30 bursts; slow 0.203 mg, 229 ms; 0 bins at or below zero not drawn
   hyst_campaign        252.0 x 176.4 pt   min text 8.0 pt (18 text objects)   <- twin/data/temp_log_unitA_hyst_fastrep1.csv
   safemap_banded       252.0 x 187.2 pt   min text 8.0 pt (13 text objects)   <- tools/data/r3_map_uncertainty_unitA_rev (C-1, D6, C-7; classes to 3 s)
   b2_guard_violation   252.0 x 176.4 pt   min text 8.0 pt (22 text objects)   <- unitA_b2_guard_sweep_20260709_082651

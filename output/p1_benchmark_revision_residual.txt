@@ -1,0 +1,8 @@
+RESIDUAL above each wake's fitted transient, 0 to 3 ms after the run's map guard; budget 0.64 mg; runs of at least 10 wakes
+unit     b0_mg  runs  residual_mg  se_mg
+   A   0 to 40     1       -0.029    NaN
+   A  40 to 70    23        0.106  0.036
+   A 70 to inf    38        0.043  0.034
+   B   0 to 40    16       -0.069  0.053
+   B  40 to 70    12        0.169  0.074
+   B 70 to inf    13        0.278  0.064

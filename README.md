@@ -48,8 +48,10 @@ Run every command from the bundle's root with the virtual environment's Python (
 | In the paper | Command | Data read |
 |---|---|---|
 | Table II, measured rows (mean ± SD) | `twin/analysis/p1_table2.py` | `r1_power_*`, `r1_burst_*_n30_*`, `r1_inrush_*shunt1p00*` |
+| Table II surge energies (Section III-A, Eq. (11): integrated to electrical settling) | `tools/extract_r1_inrush_repeatability.py --input-dir tools/data/<captures> --label unit<U>_r1_inrush_<mode>_n10_shunt1p00 --unit <U> --mode <mode> --shunt-ohm 1.0` | `pd_scope/`, `rail_off_scope/` (unit A), `unitB_PD/`, `unitB_rail_off/` (unit B); writes `r1_inrush_repeatability_*` |
+| Table II scale-factor wake deviation and κb (Sections III-D, III-E) | `twin/analysis/p1_sf_tempco.py` | `unit*_r1_sf_wake_*/sf_wake_cycles.csv`, `twin/data/temp_log.csv`, `twin/data/temp_log_unitB.csv` |
 | Table II guards; Section VII (transfer) | `twin/analysis/p1_transfer_revision.py` | the coefficient sets of Table II, written in the script |
-| Fig. 3 (wake-current surge; recovery terms) | `paper/figures/make_revision_figures.py inrush recovery_terms` | `pd_scope/`, `rail_off_scope/`, the 30-burst calibration set |
+| Fig. 3 (wake-current surge with each mode's median settling time; recovery terms) | `paper/figures/make_revision_figures.py inrush recovery_terms` | `pd_scope/`, `rail_off_scope/`, the newest `r1_inrush_*shunt1p00*`, the 30-burst calibration set |
 | Section III-B (one or two recovery terms) | `twin/analysis/p1_recovery_models.py` | the 30-burst calibration sets |
 | Fig. 4; Section VIII (hysteresis, r_max, guards that carry the loop) | `paper/figures/make_revision_figures.py hyst_campaign`; `cd twin && ../.venv/bin/python analysis/p1_ramp_guard.py` | `twin/data/temp_log_*_hyst_*.csv` |
 | Table V, Fig. 5 (the map and its bands); bandwidth with a saving | `twin/analysis/p1_map_revision.py`, then `--bandwidth` and `--beyond-2s` (the classes from 2 s to 3 s, where the figure's axis ends); `paper/figures/make_revision_figures.py safemap_banded` | the Table II runs; writes `tools/data/r3_map_uncertainty_unitA_rev/` |
@@ -58,7 +60,7 @@ Run every command from the bundle's root with the virtual environment's Python (
 | Fig. 8; Section V-E (real drift) | `twin/analysis/p1_m3_audit.py tools/data/m3_real_unitA_20261016_024528 --delays` (and `..._unitB_20261012_231635`); `paper/figures/make_revision_figures.py m3_drift` | `m3_real_unit*/`, `ctl_m3_real_*`, `r1_burst_repeatability_m3_real_*` |
 | Fig. 9 (transfer) | `paper/figures/make_revision_figures.py transfer_paper` | the coefficient sets of Table II |
 | Table IV (uncertainty budget of the guard, printed first; the budget as submitted after it); Section III-F (the node's clock against the host's) | `twin/analysis/p1_uncertainty_budget.py` | the calibration sets, the burst record, `m3_real_unit*/` |
-| Table VI, Section VI (rules for the first trusted reading) | `twin/analysis/p1_benchmark_revision.py`, with `--fine` (the slope rule's finer grid) and `--moving` (the sensor moving) | the burst record |
+| Table VI, Section VI (rules for the first trusted reading) | `twin/analysis/p1_benchmark_revision.py`, with `--fine` (the slope rule's finer grid), `--moving` (the sensor moving) and `--residual` (the residual above the fitted transient by run amplitude) | the burst record |
 | Section III-F (record checks: 4508 bursts, late first valid frames, the start-up rule) | `twin/analysis/p1_revision_checks.py` | the burst record |
 | The slow term b_s (Sections II-B, III-B) | `twin/analysis/p1_slow_term_october.py` | the burst record |
 
@@ -75,9 +77,9 @@ states for a companion study; the paper uses them only as the record of wakes.
 - The logs of the controller campaign (Section V-D). The controller is the subject of a separate
   paper; its code and the logs of its comparisons are in that paper's bundle,
   [github.com/MaivaSoftwares/adaptiveControl](https://github.com/MaivaSoftwares/adaptiveControl).
-- The captures behind Section III-D (unit A's flips are here as the per-cycle means the map's
-  propagation reads; unit B's are not), Section III-E (the bias temperature coefficient fit) and
-  Section V-B (the operating-point grid). Available on request.
+- The captures behind Section V-B (the operating-point grid). Available on request. The
+  scale-factor flips of Section III-D are here as per-cycle means (`sf_wake_cycles.csv`), the
+  values the paper's statistics are computed from.
 - The rest of the research repository: the node's firmware other than `core/safemap.c`, the
   digital twin's engine, dashboard and tests, and the bench's acquisition scripts other than the
   burst tool's fit.

@@ -1,8 +1,8 @@
 unit A
   P_on (mW)              65.0718 +/- 0.1483   (30 windows)
   P_sleep pd (mW)         0.6323 +/- 0.1365   (30 windows)
-  E_inrush pd (mJ)        0.0770 +/- 0.0003   (10 captures)
-  E_inrush r.o. (mJ)      0.2499 +/- 0.0012   (10 captures)
+  E_inrush pd (mJ)        0.0711 +/- 0.0004   (10 captures)
+  E_inrush r.o. (mJ)      0.2456 +/- 0.0009   (10 captures)
   t_fv pd (ms)            6.1738 +/- 0.0008   (30 bursts)
   b0 pd (mg)             82.5923 +/- 1.7680   (30 bursts)
   tau pd (ms)             1.4488 +/- 0.0291   (30 bursts)
@@ -10,10 +10,9 @@ unit A
 unit B
   P_on (mW)              66.0926 +/- 0.1179   (30 windows)
   P_sleep pd (mW)         1.2689 +/- 0.1877   (30 windows)
-  E_inrush pd (mJ)        0.1039 +/- 0.0030   (10 captures)
-  E_inrush r.o. (mJ)      0.3104 +/- 0.0152   (10 captures)
+  E_inrush pd (mJ)        0.0779 +/- 0.0020   (10 captures)
+  E_inrush r.o. (mJ)      0.2890 +/- 0.0126   (10 captures)
   t_fv pd (ms)            6.1950 +/- 0.0000   (30 bursts)
   b0 pd (mg)             26.8973 +/- 1.6448   (30 bursts)
   tau pd (ms)             1.2987 +/- 0.1232   (30 bursts)
   sigma_pw (mg)           1.7021 +/- 0.0436   (30 bursts)
-

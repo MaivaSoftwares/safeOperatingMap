@@ -1,0 +1,20 @@
+III-D: scale-factor wake deviation (ppm), mean, sample SD, 95% t-interval of the mean
+unit     mode  n  mean_ppm  sd_ppm  ci95_lo  ci95_hi
+   A       pd 10     -69.7   170.2   -191.4     52.1
+   A rail_off 10       6.5   330.7   -230.0    243.0
+   B       pd 10    -201.4   117.7   -285.6   -117.2
+   B rail_off 10     -52.1   228.7   -215.7    111.5
+
+III-E: bias temperature coefficient kappa_b (+/- standard error of the fit)
+-- unit A: temp_log.csv, warm-up dropped 0 s
+=== bias-TC: n=7650, ΔT span=36.27 °C (20.79–57.06) ===
+  bias-TC          = -75.5 ± 3.0 µg/°C   (DS spec ≤ 200 µg/°C)   R²=0.631
+  drift (separated)= +11.90 mg over run (+0.79 mg/min)
+  leg cross-check  : heating -98.5 | cooling -122.3 µg/°C (univariate, drift-affected; they do not bracket the bias-TC; same sign confirms it)
+  C2: ΔT_crit (bias=ε=1 mg) = 13.3 °C  -> C2 robust to ordinary ΔT
+-- unit B: temp_log_unitB.csv, warm-up dropped 180 s
+=== bias-TC: n=8656, ΔT span=42.12 °C (21.28–63.40) ===
+  bias-TC          = -68.9 ± 4.8 µg/°C   (DS spec ≤ 200 µg/°C)   R²=0.101
+  drift (separated)= -0.17 mg over run (-0.01 mg/min)
+  leg cross-check  : heating +132.0 | cooling -69.2 µg/°C (univariate, drift-affected; they bracket the bias-TC; OPPOSITE SIGNS — legs do not corroborate; treat bias-TC as unreliable here)
+  C2: ΔT_crit (bias=ε=1 mg) = 14.5 °C  -> C2 robust to ordinary ΔT

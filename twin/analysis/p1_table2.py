@@ -24,12 +24,12 @@ DATA = Path(__file__).resolve().parents[2] / "tools" / "data"
 RUNS = {
     "A": dict(power="r1_power_repeatability_unitA_r1_power_pd_railoff_n30_20260706_214002",
               bursts="r1_burst_repeatability_unitA_r1_burst_pd_n30_reprocessed_20260706_203023",
-              inrush_pd="r1_inrush_repeatability_unitA_r1_inrush_pd_n10_shunt1p00_20261017_022914",
-              inrush_ro="r1_inrush_repeatability_unitA_r1_inrush_rail_off_n10_shunt1p00_20261017_022916"),
+              inrush_pd="r1_inrush_repeatability_unitA_r1_inrush_pd_n10_shunt1p00_20261023_011141",
+              inrush_ro="r1_inrush_repeatability_unitA_r1_inrush_rail_off_n10_shunt1p00_20261023_011144"),
     "B": dict(power="r1_power_repeatability_unitB_r1_power_pd_railoff_n30_20260712_232816",
               bursts="r1_burst_repeatability_unitB_r1_burst_pd_n30_20260712_232025",
-              inrush_pd="r1_inrush_repeatability_unitB_r1_inrush_pd_n10_shunt1p00_20261017_022917",
-              inrush_ro="r1_inrush_repeatability_unitB_r1_inrush_rail_off_n10_shunt1p00_20261017_022919"),
+              inrush_pd="r1_inrush_repeatability_unitB_r1_inrush_pd_n10_shunt1p00_20261023_011147",
+              inrush_ro="r1_inrush_repeatability_unitB_r1_inrush_rail_off_n10_shunt1p00_20261023_011150"),
 }
 
 

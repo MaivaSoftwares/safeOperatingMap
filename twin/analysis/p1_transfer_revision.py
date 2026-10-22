@@ -5,8 +5,8 @@ physics under A's guard), with the coefficient sets of Table II as revised:
 
   - the slow term in the budget (decision D6, option b): b_slow = 0.21 mg on both units, carried
     into the firmware C (FW4), so every guard targets (1 - delta) eps - b_s = 0.64 mg;
-  - E_inrush at the 1.00 ohm shunt (correction C-7), the mean of 10 captures:
-    A 0.0770 / 0.2499 mJ, B 0.1039 / 0.3104 mJ;
+  - E_inrush at the 1.00 ohm shunt (correction C-7), integrated to electrical settling (C-7b,
+    2026-10-23), the mean of 10 captures: A 0.07107 / 0.2456 mJ, B 0.07794 / 0.2890 mJ;
   - unit B's P_on and pd sleep power as the mean of the 30 July windows, 66.09 and 1.269 mW,
     as unit A's (Table II revision T2-1; the A2 analysis of July used B's medians);
   - rail_off with each unit's own measured transient (correction C-1; unit B from run M1 of
@@ -59,11 +59,11 @@ def unit(p_on, p_pd, e_pd, e_ro, b0_pd, fv_pd, tau_pd, b0_ro, fv_ro, tau_ro, sig
 
 # Table II (pd and rail_off transients at their own first valid; energies at 1.00 ohm;
 # powers and energies are means over the repeats, as Table II gives them)
-UNIT_A = unit(p_on=65.07e-3, p_pd=0.632e-3, e_pd=0.0770e-3, e_ro=0.2499e-3,
+UNIT_A = unit(p_on=65.07e-3, p_pd=0.632e-3, e_pd=0.07107e-3, e_ro=0.2456e-3,
               b0_pd=82.6e-3, fv_pd=6.17e-3, tau_pd=1.449e-3,
               b0_ro=7.53e-3, fv_ro=11.41e-3, tau_ro=1.575e-3,
               sigma=1.59e-3, sf=1.0 - 70e-6, btc=-75.5e-6)
-UNIT_B = unit(p_on=66.0926e-3, p_pd=1.2689e-3, e_pd=0.1039e-3, e_ro=0.3104e-3,
+UNIT_B = unit(p_on=66.0926e-3, p_pd=1.2689e-3, e_pd=0.07794e-3, e_ro=0.2890e-3,
               b0_pd=26.9e-3, fv_pd=6.20e-3, tau_pd=1.299e-3,
               b0_ro=1.50e-3, fv_ro=12.35e-3, tau_ro=1.019e-3,
               sigma=1.70e-3, sf=1.0 - 201e-6, btc=-68.9e-6)

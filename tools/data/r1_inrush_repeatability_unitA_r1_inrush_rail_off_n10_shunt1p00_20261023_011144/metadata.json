@@ -1,0 +1,14 @@
+{
+  "label": "unitA_r1_inrush_rail_off_n10_shunt1p00",
+  "unit": "A",
+  "mode": "rail_off",
+  "started_at": "20261023_011144",
+  "input_dir": "tools/data/rail_off_scope",
+  "n": 10,
+  "shunt_ohm": 1.0,
+  "voltage_v": 5.019,
+  "pre_end_s": -0.001,
+  "steady_start_s": 0.006,
+  "notes": "C-7b (2026-10-23): integration ends at electrical settling T_wake (smoothed excess within 4 SD of steady noise for 1 ms); shunt 1.00 ohm; same captures as the July extraction",
+  "processing": "E_inrush integrates positive excess above post-wake steady active shunt voltage from 0 to T_wake (smoothed excess within 4 SD of steady noise for 1 ms); tau_eff = E/(Vrail*I_peak_excess)."
+}
