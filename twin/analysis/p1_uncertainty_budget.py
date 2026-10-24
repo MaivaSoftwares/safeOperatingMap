@@ -32,6 +32,7 @@ from pathlib import Path
 
 import numpy as np
 import pandas as pd
+from scipy import stats
 
 TWIN = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(TWIN))
@@ -65,6 +66,9 @@ SLOW_MG = bm.SLOW_MG
 # the value Table IV quotes and p1_map_revision.py draws with. From session to session over the record
 # the slow term spans 0.12 to 0.29 mg (10th to 90th percentile, p1_revision_checks.py).
 B_SLOW_MG, U_B_SLOW_MG = 0.21, 0.036
+# Degrees of freedom of u(b_s): the bootstrap is over unit A's 30 calibration bursts, so 30 - 1. The same
+# value goes with the row on unit B, where unit A's slow term is carried.
+NU_B_SLOW = 29
 REV_BUDGET_MG = BUDGET_MG - B_SLOW_MG
 SLOW_SESSIONS_MG = (0.12, 0.29)
 # Bias temperature coefficient and its standard uncertainty, mg per degC (manuscript Table V)
@@ -125,6 +129,13 @@ def table_iv(cal: pd.DataFrame, budget: float = REV_BUDGET_MG, reps: int = 4000,
                 scale_factor=m.tau * SF_LIMIT_REL / SQRT3,
                 resolution=c_b0 * LOG_STEP_MG / (2 * SQRT3))
     own = math.sqrt(sum(v * v for v in rows.values()))
+    # Effective degrees of freedom by the Welch-Satterthwaite formula (GUM G.4.1): n - 1 for the
+    # repeatability row, NU_B_SLOW for the slow term, and infinite for the Type B limits (GUM G.4.3,
+    # limits taken as exact), which drop out of the sum. The level of confidence of k = 2 then comes
+    # from the t-distribution with nu_eff degrees of freedom (GUM G.3, G.6.6).
+    dof = dict(repeatability=n - 1, slow=NU_B_SLOW)
+    nu_eff = own ** 4 / sum(rows[k] ** 4 / v for k, v in dof.items())
+    p_k2 = float(2 * stats.t.cdf(2.0, nu_eff) - 1)
     clock = g * CLOCK_LIMIT_REL / SQRT3
     rng = np.random.default_rng(seed)
     boot = []
@@ -134,7 +145,7 @@ def table_iv(cal: pd.DataFrame, budget: float = REV_BUDGET_MG, reps: int = 4000,
     own_boot = math.sqrt(np.var(boot, ddof=1) + sum(v * v for k, v in rows.items() if k != "repeatability"))
     per_wake = np.array([guard(w.b0, w.tau, w.fv, budget) for w in cal.itertuples()])
     return dict(n=n, b0=m.b0, tau=m.tau, fv=m.fv, corr=r, guard=g, rows=rows, own=own, clock=clock,
-                si=math.hypot(own, clock), own_boot=own_boot, per_wake_sd=float(per_wake.std(ddof=1)),
+                nu_eff=nu_eff, p_k2=p_k2, si=math.hypot(own, clock), own_boot=own_boot, per_wake_sd=float(per_wake.std(ddof=1)),
                 per_wake_lo=float(np.percentile(per_wake, 2.5)), per_wake_hi=float(np.percentile(per_wake, 97.5)),
                 slow_sessions=[guard(m.b0, m.tau, m.fv, BUDGET_MG - s) for s in SLOW_SESSIONS_MG])
 
@@ -155,9 +166,11 @@ def print_table_iv(record: list) -> None:
         (f"sample resolution ({LOG_STEP_MG} mg)", "B", lambda a: f"{a['rows']['resolution']:.4f}"),
         ("combined, node clock", "", lambda a: f"{a['own']:.3f}"),
         ("expanded (k = 2)", "", lambda a: f"{2 * a['own']:.2f}"),
+        ("  effective degrees of freedom, Welch-Satterthwaite (GUM G.4.1)", "", lambda a: f"{a['nu_eff']:.0f}"),
+        ("  level of confidence of k = 2, t-distribution at nu_eff", "", lambda a: f"{100 * a['p_k2']:.1f} %"),
         (f"node clock in SI seconds (u = {100 * CLOCK_LIMIT_REL / SQRT3:.2f} %; limits combined "
          f"+-{100 * CLOCK_LIMIT_REL:.2f} %)", "B", lambda a: f"{a['clock']:.2f}"),
-        ("combined in SI seconds (k = 2)", "", lambda a: f"{a['si']:.2f} ({2 * a['si']:.2f})"),
+        ("combined in SI seconds (k = 2 in parentheses)", "", lambda a: f"{a['si']:.2f} ({2 * a['si']:.2f})"),
         ("guard, Eq. (3)", "", lambda a: f"{a['guard']:.2f}"),
     ]
     print(f"{'source':<72}{'type':<6}{'unit A':>14}{'unit B':>14}")

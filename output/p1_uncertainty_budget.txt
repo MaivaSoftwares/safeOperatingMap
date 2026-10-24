@@ -8,8 +8,10 @@ scale factor (+-0.5 %)                                                  B       
 sample resolution (0.1 mg)                                              B             0.0005        0.0014
 combined, node clock                                                                   0.085         0.108
 expanded (k = 2)                                                                        0.17          0.22
+  effective degrees of freedom, Welch-Satterthwaite (GUM G.4.1)                           34            58
+  level of confidence of k = 2, t-distribution at nu_eff                              94.6 %        95.0 %
 node clock in SI seconds (u = 2.15 %; limits combined +-3.73 %)         B               0.28          0.24
-combined in SI seconds (k = 2)                                                   0.30 (0.59)   0.26 (0.52)
+combined in SI seconds (k = 2 in parentheses)                                    0.30 (0.59)   0.26 (0.52)
 guard, Eq. (3)                                                                         13.22         11.05
 check, bootstrap of the means over the bursts in place of the first row: combined 0.085 ms (A), 0.108 ms (B)
 reported beside the budget:
