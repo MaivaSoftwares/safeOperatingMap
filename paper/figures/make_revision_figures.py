@@ -410,16 +410,21 @@ def fig_b2_guard_violation() -> dict:
     for us in sorted(df.point_us.unique(), reverse=True):
         g = df[df.point_us == us]
         tr = g.probe_mean_mg - ped
-        rows.append({"point_us": int(us),
-                     "t0_ms": g.t_probe0_us.mean() / 1e3, "t1_ms": g.t_probe1_us.mean() / 1e3,
+        t0, t1 = g.t_probe0_us.mean() / 1e3, g.t_probe1_us.mean() / 1e3
+        pred = B.window_mean_pred(fits, t0, t1)
+        rows.append({"point_us": int(us), "t0_ms": t0, "t1_ms": t1,
                      "transient_mean_mg": float(tr.mean()),
                      "transient_sem_mg": float(tr.std(ddof=1) / np.sqrt(len(tr))),
                      "transient_std_mg": float(tr.std(ddof=1)),
+                     "pred_median_mg": float(np.median(pred)),
+                     "pred_p2_5_mg": float(np.percentile(pred, 2.5)),
+                     "pred_p97_5_mg": float(np.percentile(pred, 97.5)),
                      "saturated": bool(tr.std(ddof=1) > 100.0)})
     # read-only check against the table b2_guard.main() committed beside the sweep
     committed = {p["point_us"]: p for p in json.loads((B.SWEEP / "analysis.json").read_text())["points"]}
     for r in rows:
-        for key in ("t0_ms", "t1_ms", "transient_mean_mg", "transient_sem_mg"):
+        for key in ("t0_ms", "t1_ms", "transient_mean_mg", "transient_sem_mg",
+                    "pred_median_mg", "pred_p2_5_mg", "pred_p97_5_mg"):
             if not math.isclose(r[key], committed[r["point_us"]][key], rel_tol=1e-9, abs_tol=1e-9):
                 raise SystemExit(f"b2: {key} at {r['point_us']} us differs from the committed analysis.json")
         if r["saturated"] != committed[r["point_us"]]["saturated"]:
@@ -452,18 +457,30 @@ def fig_b2_guard_violation() -> dict:
     ax.axvspan(1e3 * gb["p2_5"], 1e3 * gb["p97_5"], color="0.4", alpha=0.25, lw=0)
     ax.annotate(r"$T_{\mathrm{guard}}$", (1e3 * gb["median"], 330), color=MUTED, ha="center")
 
+    # the baseline (B.BASELINE_US) is the reference level the others are measured from, so its bias
+    # is zero by construction: it is not drawn (the caption says so). Each other point is the mean
+    # over its probe window, set beside the trusted-sample prediction of that same window mean.
+    first = True
     for r in rows:
+        if r["point_us"] == B.BASELINE_US:
+            continue
         x = 0.5 * (max(r["t0_ms"], tfv_med) + r["t1_ms"])
         xerr = [[x - max(r["t0_ms"], tfv_med)], [r["t1_ms"] - x]]
         if r["saturated"]:
             ax.errorbar(x, 200.0, xerr=xerr, fmt="v", color=B.COLOR["pd"], ms=5, capsize=2, lw=1)
-            ax.annotate(f"saturated\n($\\sigma$ = {r['transient_std_mg'] / 1e3:.1f} g)", (x, 300),
-                        color=B.COLOR["pd"], ha="center", va="bottom", linespacing=LS)
+            ax.annotate(f"{r['point_us'] / 1e3:g} ms: saturated\n($\\sigma$ = {r['transient_std_mg'] / 1e3:.1f} g)",
+                        (x, 300), color=B.COLOR["pd"], ha="center", va="bottom", linespacing=LS)
             continue
-        y = max(abs(r["transient_mean_mg"]), 0.05)
+        p_lo, p_hi = sorted((abs(r["pred_p2_5_mg"]), abs(r["pred_p97_5_mg"])))
+        p_med = abs(r["pred_median_mg"])
+        ax.errorbar(x, p_med, yerr=[[p_med - p_lo], [p_hi - p_med]], fmt="o", mfc="white",
+                    color=B.COLOR["band"], ms=4, mew=1, capsize=2, lw=1,
+                    label="predicted (window mean, 95%)" if first else None)
+        y = abs(r["transient_mean_mg"])
         ax.errorbar(x, y, xerr=xerr, yerr=r["transient_sem_mg"], fmt="o", color=B.COLOR["pd"],
                     ms=4, mec="white", mew=0.5, capsize=2, lw=1,
-                    label="measured (probe window)" if r["point_us"] == B.BASELINE_US else None)
+                    label="measured (window mean)" if first else None)
+        first = False
         # each point's label sits just before the left end of its probe window, clear of the curve
         ax.annotate(f"{r['point_us'] / 1e3:g} ms", (max(r["t0_ms"], tfv_med), y), xytext=(-5, 0),
                     textcoords="offset points", color=B.COLOR["pd"], ha="right", va="center_baseline")
